@@ -37,8 +37,8 @@
         <!--</div>-->
         <div class="order">
             <div class="title">订单列表</div>
-            <div class="order_list" v-if="No_data === true" v-for="(item, index) in OrderData" :key="index">
                 <div class="customer">
+                    <div class="order_list" v-if="No_data === true" v-for="(item, index) in OrderData" :key="index">
                     <span class="lable" v-if="item.typs===1">月嫂</span>
                     <span class="lable" v-if="item.typs===2">育儿嫂</span>
                     <span class="lable2">客户：{{item.customername}}</span>
