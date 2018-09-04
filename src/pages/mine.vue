@@ -79,7 +79,7 @@
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/schedule.png" class="img1">
                 <p>档期</p>
             </div>
-            <div class="menu-list-item">
+            <div class="menu-list-item"  @click="goOrderList()">
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/order.png" class="img2">
                 <p>订单</p>
             </div>
@@ -119,6 +119,12 @@
       // 获取 当前路由来 切换tabBar样式
       getPath() {
         this.this_path = this.$route.path.slice(1);
+      },
+      // 跳转到 预约 列表
+      goOrderList() {
+        this.$router.push({
+          path: "/order_list?status=" + 0
+        });
       },
       // 获取用户信息
       async getUserInfo() {

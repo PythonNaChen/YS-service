@@ -18,6 +18,7 @@ const logs_record = r => require.ensure([], () => r(require("@/pages/logs_record
 // 日志记录 --->  数据填写
 const dataDetail = r => require.ensure([], () => r(require("@/pages/dataDetail.vue")), "dataDetail"); // 数据详情页
 const collection = r => require.ensure([], () => r(require('@/pages/collection.vue')), 'collection'); // 月嫂详情页
+const order_list = r => require.ensure([], () => r(require('@/pages/order_list.vue')), 'order_list'); // 月嫂详情页
 
 export default new Router({
   routes: [
@@ -68,6 +69,12 @@ export default new Router({
       path: "/dataDetail",
       name: "dataDetail",
       component: dataDetail
+    },
+    // 数据详情
+    {
+      path: "/order_list",
+      name: "order_list",
+      component: order_list
     }
   ]
 });
