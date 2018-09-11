@@ -91,10 +91,11 @@
       };
     },
     methods: {
-      //返回上一页
+      // 返回上一页
       goBack() {
         this.$router.go(-1);
       },
+      // id 选择器
       $(id) {
         return typeof id === "string" ? document.getElementById(id) : null;
       },
@@ -128,6 +129,7 @@
           console.log("allData", this.allData);
         }
       },
+      // 跳转到日志界面
       go_logs_record(id, name) {
         sessionStorage.setItem("id", id);
         this.$router.push({

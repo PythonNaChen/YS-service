@@ -11,12 +11,10 @@
             <div class="code">
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/code_07.png" alt="">
                 <input type="text" placeholder="输入验证码" v-model="pwd" maxlength="6">
-                <span v-if="!bool" @click="changeCode()">
-                    点击发送验证码
+                <span v-if="!showLogin" @click="changeCode()">
+                    {{notice}}
                 </span>
-                <span v-if="bool">
-                    已发送，注意查收
-                </span>
+                <span v-if="showLogin" style="padding: 2px 20px" @click="loginValidate()">登录</span>
             </div>
         </div>
     </div>
@@ -31,15 +29,18 @@
       "pwd": function() {
         if (this.customermobile) {
           if (this.pwd.length === 6) {
-            this.loginValidate();
+            // this.loginValidate();
+            this.showLogin = true
+          } else {
+            this.showLogin = false
           }
         }
       },
-      "bool": function(v) {
+      "notice": function() {
         let that = this;
-        if (this.bool === true) {
+        if (this.notice === '已发送') {
           setTimeout(function() {
-            console.log(that.bool = !v);
+            that.notice = '发送验证码'
           }, 20000);
         }
       }
@@ -48,13 +49,16 @@
       return {
         customermobile: null,
         pwd: null,
-        bool: false
+        notice: '发送验证码',
+        showLogin: false, // 显示登录
       };
     },
 
     methods: {
       // 发送短信验证
       async changeCode() {
+        // 手机号长度不够就不触发 短息验证码
+        if (this.customermobile.length<11) return false
         let res = await axios.get(
           "/meixinJF/xcx/yzmTel",
           {
@@ -65,8 +69,10 @@
         );
         if (res) {
           console.log("发送短信验证", res);
+          this.notice = '已发送'
         }
       },
+
       // 当验证码输入6 位长度后交给后台验证成功就跳转
       async loginValidate() {
         let res = await axios.get(
@@ -95,6 +101,11 @@
               path: "/login",
               query: {}
             });
+            const toast = this.$createToast({
+              txt: "登录失败，请检查重试",
+              type: 'error'
+            })
+            toast.show()
           }
         }
       }
@@ -158,5 +169,6 @@
         color: #ea5944;
         height: auto;
         line-height: 25px;
+        float: right;
     }
 </style>
