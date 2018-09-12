@@ -6,7 +6,7 @@
         <div class="info">
             <div class="phone">
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/phone_03.png" alt="">
-                <input type="text" placeholder="手机号" maxlength="11" v-model="customermobile ">
+                <input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"  placeholder="手机号" maxlength="11" v-model="customermobile ">
             </div>
             <div class="code">
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/code_07.png" alt="">

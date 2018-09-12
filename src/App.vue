@@ -8,7 +8,7 @@
 export default {
   name: 'app',
   created() {
-    this.$router.push("/login");
+    this.$router.push("/home");
   }
 }
 </script>
