@@ -6,7 +6,8 @@
                 <span>成都</span>
                 <img src="https://www.360myhl.com/meixinJF/static/images/open.png">
             </div>
-            <img src="https://www.360myhl.com/meixinJF/static/images/logo.jpg" class="logo">
+            <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/logo.jpg" class="logo">-->
+          <img  class="logo" src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="">
             <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
         </div>
         <!--轮播图-->
