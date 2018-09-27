@@ -54,7 +54,7 @@
         // 手机号长度不够就不触发 短息验证码
         if (this.customermobile.length < 11) return false
         let res = await axios.get(
-          "/meixinJF/xcx/yzmTel",
+          "/meixinJF/xcx/yzmYA",
           {
             params: {
               customermobile: this.customermobile
