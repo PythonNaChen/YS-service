@@ -143,10 +143,8 @@
             }
           );
           console.log(data);
-          if (!data.data[0].phone) {
-            this.$router.push({
-              path: "/login"
-            });
+          if (data.data[0].customermobile === '') {
+            this.$router.push('/login');
           } else {
             console.log("mine-data:", data);
             this.photo = data.data[0].wxphoto;

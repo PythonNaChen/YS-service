@@ -4,14 +4,14 @@
       <img src="../assets/images/index_icon_active.png" alt="" slot="active">
       <img src="../assets/images/index_icon_normal.png" alt="" slot="normal">
     </item>
-    <item title="咪嘛课堂" mark="mima_classroom" @option="getValue" :sel="select">
-      <img src="../assets/images/mimaClassroom_icon_active.png" alt="" slot="active">
-      <img src="../assets/images/mimaClassroom_icon_normal.png" alt="" slot="normal">
-    </item>
-    <!--<item title="在线咨询" mark="online_consulting" @option="getValue" :sel="select">-->
-    <!--<img src="../assets/images/onlineConsulting_icon_active.png" alt="" slot="active">-->
-    <!--<img src="../assets/images/onlineConsulting_icon_normal.png" alt="" slot="normal">-->
+    <!--<item title="咪嘛课堂" mark="mima_classroom" @option="getValue" :sel="select">-->
+    <!--<img src="../assets/images/mimaClassroom_icon_active.png" alt="" slot="active">-->
+    <!--<img src="../assets/images/mimaClassroom_icon_normal.png" alt="" slot="normal">-->
     <!--</item>-->
+    <item title="在线咨询" mark="online_consulting" @option="getValue" :sel="select">
+    <img src="../assets/images/onlineConsulting_icon_active.png" alt="" slot="active">
+    <img src="../assets/images/onlineConsulting_icon_normal.png" alt="" slot="normal">
+    </item>
     <item title="我的" mark="mine" @option="getValue" :sel="select">
       <img src="../assets/images/mine_icon_active.png" alt="" slot="active">
       <img src="../assets/images/mine_icon_normal.png" alt="" slot="normal">

@@ -108,7 +108,18 @@
     methods: {
       getPath() {
         this.this_path = this.$route.path.slice(1);
-      }
+      },
+      // async getEachInfo(type){
+      //   let data = await axios.get(
+      //     "/meixinJF/xcx/gxIndex",
+      //     {
+      //       params: {
+      //         id: this.$route.query.id,
+      //         typs: type
+      //       }
+      //     }
+      //   );
+      // }
     },
     created() {
       this.getPath()
