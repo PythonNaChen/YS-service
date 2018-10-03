@@ -70,12 +70,12 @@
 
   .tab_wrap li {
     text-align: center;
-    font-size: 12px;
+    font-size: 0.24rem;
   }
 
   .tab_wrap img {
-    width: 30px;
-    height: 30px;
+    width: 0.72rem;
+    height: 0.72rem;
   }
 
   .red {

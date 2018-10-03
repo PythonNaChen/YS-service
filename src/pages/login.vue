@@ -127,8 +127,8 @@
 
   .logo {
     width: 70%;
-    height: 140px;
-    margin: 0 auto 105px;
+    height: 3.7rem;
+    margin: 0 auto 3rem;
   }
 
   .logo img {
@@ -138,19 +138,19 @@
 
   .phone, .code {
     display: flex;
-    font-size: 16px;
+    font-size: 0.5rem;
     color: #aaaaaa;
     width: 80%;
-    margin: 40px auto 0;
+    margin: 1rem auto 0;
     border-bottom: 2px solid #ea5944;
-    padding: 15px 0;
+    padding: 0.4rem 0;
   }
 
   .phone img, .code img {
     vertical-align: middle;
-    width: 34px;
-    height: 34px;
-    margin-right: 20px;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.8rem;
   }
 
   .code input {
@@ -158,23 +158,24 @@
   }
 
   .code span {
-    border: 2px solid #ea5944;
-    font-size: 12px;
-    border-radius: 7px;
-    padding: 3px 5px;
+    border: 0.05rem solid #ea5944;
+    font-size: 0.3rem;
+    border-radius: 0.3rem;
+    padding: 0.1rem 0.2rem;
     color: #ea5944;
     height: auto;
-    line-height: 25px;
+    line-height: 0.8rem;
     float: right;
   }
 
   .loginBtn {
+    font-size: 0.4rem;
     color: #fff;
-    padding: 10px 35px;
+    padding: 0.3rem 1rem;
     background-color: #ea5a43;
-    border-radius: 7px;
+    border-radius: 0.3rem;
     position: absolute;
-    left: 40%;
-    bottom: -60px;
+    left: 39%;
+    bottom: -40%;
   }
 </style>

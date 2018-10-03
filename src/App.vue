@@ -27,9 +27,6 @@ export default {
     list-style: none;
   }
 
-  p, span, a {
-    font-weight: 800;
-  }
   /* cube-ui 错误提示 样式调整 图标上移*/
   .cube-toast-icon {
     margin-top: -10px;

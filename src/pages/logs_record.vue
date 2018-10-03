@@ -1,22 +1,24 @@
 <template>
-    <div class="page">
-        <!--返回上一页-->
-        <div class="goBack" @click="goBack()">
-            <img src="../assets/images/goBack.png" alt="">
-        </div>
-        <p>宝宝护理</p>
-        <div class="baby_nurse">
-            <div class="nurse_item" v-for="(item, index) in baby_nurse_list" :key="index">
-                <img :src="item.imgSrc" alt="" @click="goBabyDetail(item)">
-            </div>
-        </div>
-        <p>妈妈护理</p>
-        <div class="mm_nurse">
-            <div class="nurse_item" v-for="(item, index) in mm_nurse_list" :key="index">
-                <img :src="item.imgSrc" alt="" @click="goMotherDetail(item)">
-            </div>
-        </div>
+  <div class="page">
+    <!--返回上一页-->
+    <div class="goBack" @click="goBack()">
+      <img src="../assets/images/goBack.png" alt="">
     </div>
+    <br>
+    <br>
+    <p>宝宝护理</p>
+    <div class="baby_nurse">
+      <div class="nurse_item" v-for="(item, index) in baby_nurse_list" :key="index">
+        <img :src="item.imgSrc" alt="" @click="goBabyDetail(item)">
+      </div>
+    </div>
+    <p>妈妈护理</p>
+    <div class="mm_nurse">
+      <div class="nurse_item" v-for="(item, index) in mm_nurse_list" :key="index">
+        <img :src="item.imgSrc" alt="" @click="goMotherDetail(item)">
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -27,31 +29,31 @@
     data() {
       return {
         baby_nurse_list: [
-          { index: 0, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_1.png" },
-          { index: 1, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_2.png" },
-          { index: 2, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_3.png" },
-          { index: 3, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_4.png" },
-          { index: 4, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_5.png" },
-          { index: 5, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_6.png" },
-          { index: 6, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_7.png" },
-          { index: 7, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_8.png" },
-          { index: 8, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_9.png" },
-          { index: 9, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_10.png" },
-          { index: 10, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_11.png" },
-          { index: 11, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_12.png" },
-          { index: 12, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_13.png" }
+          {index: 0, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_1.png"},
+          {index: 1, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_2.png"},
+          {index: 2, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_3.png"},
+          {index: 3, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_4.png"},
+          {index: 4, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_5.png"},
+          {index: 5, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_6.png"},
+          {index: 6, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_7.png"},
+          {index: 7, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_8.png"},
+          {index: 8, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_9.png"},
+          {index: 9, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_10.png"},
+          {index: 10, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_11.png"},
+          {index: 11, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_12.png"},
+          {index: 12, imgSrc: "https://www.360myhl.com/meixinJF/static/images/b_2_13.png"}
         ],
         mm_nurse_list: [
-          { index: 0, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_1.png" },
-          { index: 1, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_2.png" },
-          { index: 2, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_3.png" },
-          { index: 3, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_4.png" },
-          { index: 4, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_5.png" },
-          { index: 5, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_6.png" },
-          { index: 6, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_7.png" },
-          { index: 7, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_8.png" },
-          { index: 8, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_9.png" },
-          { index: 9, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_10.png" }
+          {index: 0, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_1.png"},
+          {index: 1, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_2.png"},
+          {index: 2, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_3.png"},
+          {index: 3, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_4.png"},
+          {index: 4, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_5.png"},
+          {index: 5, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_6.png"},
+          {index: 6, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_7.png"},
+          {index: 7, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_8.png"},
+          {index: 8, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_9.png"},
+          {index: 9, imgSrc: "https://www.360myhl.com/meixinJF/static/images/m_2_10.png"}
         ],
         orderid: "",
         yname: ""
@@ -118,7 +120,7 @@
         if (data) {
           // 跳转到表单填写页面
           this.$router.push({
-            path: "/dataDetail?index="+ "b" + options.index + "&orderid=" + that.orderid + '&yname=' + that.yname,
+            path: "/dataDetail?index=" + "b" + options.index + "&orderid=" + that.orderid + '&yname=' + that.yname,
           });
         }
       },
@@ -178,7 +180,7 @@
         if (data) {
           // 跳转到表单填写页面
           this.$router.push({
-            path: "/dataDetail?index="+ "m" + options.index + "&orderid=" + that.orderid + '&yname=' + that.yname,
+            path: "/dataDetail?index=" + "m" + options.index + "&orderid=" + that.orderid + '&yname=' + that.yname,
           });
         }
       }
@@ -190,55 +192,62 @@
   };
 </script>
 
-<style scoped>
-    .goBack{
-        position: absolute;
-        top: 0.9%;
-        left: 2%;
-        width: 20px;
-        height: 15px;
-    }
-    .goBack img{
-        width: 100%;
-        height: 100%;
-    }
-    .page {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        padding: 0 10px;
-        background-color: #fff;
-        position: relative;
-    }
+<style scoped lang="less">
+  .goBack {
+    position: absolute;
+    top: 0.9%;
+    left: 2%;
+    width: 0.53rem;
+    height: 0.53rem;
+  }
 
-    .page .baby_nurse, .mm_nurse {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    }
+  .goBack img {
+    width: 100%;
+    height: 100%;
+  }
 
-    .page .baby_nurse {
-        margin-bottom: 10px;
-    }
+  .page {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 10px;
+    background-color: #f6f6f6;
+    position: relative;
+  }
 
-    .page .nurse_item {
-        width: 88px;
-        height: 88px;
-    }
+  .page .baby_nurse, .mm_nurse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding-left: 0.3rem;
+  }
 
-    .page .nurse_item img {
-        width: 100%;
-        height: 100%;
-    }
+  .page .baby_nurse {
+    margin: 10px 0;
+  }
 
-    .page p {
-        font-size: 14px;
-        color: #e73900;
-        font-weight: 800;
-        margin-left: 20px;
-        height: 25px;
-        line-height: 25px;
-    }
+  .page .nurse_item {
+    width: 2.08rem;
+    height: 2.08rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page .nurse_item img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .page p {
+    font-size: 0.4rem;
+    color: #e73900;
+    font-weight: 800;
+    margin-left: 0.4rem;
+        height: 0.65rem;
+    line-height: 0.65rem;
+  }
 </style>

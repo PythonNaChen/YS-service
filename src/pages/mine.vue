@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <!--头部信息-->
     <div class="head">
       <div class="head_box">
         <div class="headIMG">
@@ -13,18 +14,21 @@
         </div>
       </div>
     </div>
+    <!--客户经理-->
     <div class="manager">
       <img src="http://www.360myhl.com/meixinJF/MM/ximg/user_03.png" alt="">
       <span class="lab1">客户经理：</span>
       <span class="lab2" v-if="YNAME === null">暂无</span>
       <span class="lab2" v-else>{{YNAME}}</span>
     </div>
+    <!--联系方式-->
     <div class="phone">
       <img src="http://www.360myhl.com/meixinJF/MM/ximg/user_07.png" alt="">
       <span class="lab1">联系电话：</span>
       <span class="lab2" v-if="YPHONE === null">暂无</span>
       <span class="lab2" v-else>{{YPHONE}}</span>
     </div>
+    <!--钱包&消息-->
     <!--<div class="manager_msg">-->
     <!--<div class="item">-->
     <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/user_14.png" alt="">-->
@@ -36,6 +40,7 @@
     <!--</div>-->
     <!--</div>-->
 
+    <!--订单列表-->
     <div class="order">
       <div class="title">订单列表</div>
       <!-- 有数据 -->
@@ -78,6 +83,7 @@
       </div>
     </div>
 
+    <!--选项列表-->
     <div class="menu-list">
       <div class="menu-list-item" @click="goSchedule">
         <img src="http://www.360myhl.com/meixinJF/MM/ximg/schedule.png" class="img1">
@@ -92,9 +98,11 @@
         <p>报名</p>
       </div>
     </div>
+
     <tab-bar :select="this_path"></tab-bar>
   </div>
 </template>
+
 <script>
   import tabBar from "../components/tabbar";
   import axios from "axios";
@@ -216,145 +224,153 @@
   };
 </script>
 
-<style scoped>
-  p, span, a {
-    font-weight: normal;
-  }
+<style scoped lang="less">
+  .page {
+    .head {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 1.24rem 0 0 1rem;
+      background: url("https://www.360myhl.com/meixinJF/MM/ximg/mine_BIMG.png") no-repeat;
+      background-size: 100% 6.3rem;
+      height: 6.3rem;
+      .head_box {
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        .headIMG {
+          width: 2.68rem;
+          height: 2.68rem;
+          border-radius: 50%;
+          overflow: hidden;
+          text-align: center;
+          border: 0.06rem solid #ffffff;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .userInfo {
+          margin-left: 0.45rem;
+          .line_one {
+            font-size: 0.6rem;
+            .level {
+              color: #fff;
+              background-color: #ff0000;
+              padding: 0.01rem 0.03rem;
+              border-radius: 4px;
+              font-size: 0.24rem;
+              margin: 0 5px;
+            }
+          }
+          .line_two {
+          }
+        }
+      }
+    }
+    .manager {
+      font-size: 0.36rem;
+      height: 0.97rem;
+      line-height: 0.97rem;
+      background-color: #ffffff;
+      border-bottom: 0.08rem solid #f6f6f6;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 0.8rem;
+      img {
+        width: 0.45rem;
+        height: 0.49rem;
+      }
+    }
+    .phone {
+      font-size: 0.36rem;
+      height: 0.97rem;
+      line-height: 0.97rem;
+      background-color: #ffffff;
+      border-bottom: 0.08rem solid #f6f6f6;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 0.8rem;
+      img {
+        width: 0.45rem;
+        height: 0.49rem;
+      }
+    }
+    .manager_msg {
+      display: flex;
+      justify-content: space-between;
+      .item {
+        width: 49.5%;
+        height: 0.98rem;
+        background-color: #ffffff;
+        text-align: center;
+        line-height: 0.98rem;
+        img {
+          width: 0.57rem;
+          height: 0.48rem;
+          vertical-align: middle;
+        }
+        span {
+          font-size: 0.36rem;
+        }
+      }
 
-  .head {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 20px 0 0 40px;
-    background-image: url("https://www.360myhl.com/meixinJF/MM/ximg/mine_BIMG.png");
-    background-repeat: no-repeat;
-    background-size: 100% 180px;
-    height: 180px;
-  }
+    }
+    /*订单列表*/
+    .order {
+      border-bottom: 1px solid #f6f6f6;
+      background-color: #ffffff;
+      .title {
+        border-top: 0.08rem solid #f6f6f6;;
+        font-size: 0.36rem;
+        border-bottom: 1px solid #ededef;
+        padding-left: 0.74rem;
+        line-height: 0.68rem;
+        height: 0.68rem;
+      }
+      .customer {
+        .order_list {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          padding: 10px 20px 10px 20px;
+          font-size: 14px;
+          position: relative;
+          border-bottom: 1px solid #ffffff;
+        }
+        img {
+          width: 15px;
+          height: 15px;
+          vertical-align: middle;
+        }
+      }
 
-  .head_box {
-    font-size: 14px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-  }
+    }
+    /*菜单列表*/
+    .menu-list {
+      font-size: 0.36rem;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      background: #fff;
+      box-sizing: border-box;
+      text-align: center;
+      justify-content: space-around;
+      padding: 0.67rem 0;
+      .menu-list-item {
+        p {
+          line-height: 0.6rem;
+          height: 0.6rem;
+        }
+        img {
+          width: 0.8rem;
+          height: 0.8rem;
+        }
+      }
+    }
 
-  .head_box .headIMG {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    overflow: hidden;
-    text-align: center;
-    border: 5px solid #ffffff;
-  }
-
-  .head_box .headIMG img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .head_box .userInfo {
-    margin-left: 15px;
-  }
-
-  .head_box .line_two {
-    font-size: 16px;
-  }
-
-  .level {
-    color: #fff;
-    background-color: #ff0000;
-    padding: 1px 3px;
-    border-radius: 4px;
-    font-size: 12px;
-    margin: 0 5px;
-  }
-
-  .manager {
-    font-size: 14px;
-    height: 30px;
-    line-height: 30px;
-    background-color: #ffffff;
-    border-bottom: 2px solid #f6f6f6;
-  }
-
-  .manager img {
-    width: 15px;
-    height: 15px;
-    margin-left: 20px;
-  }
-
-  .phone {
-    font-size: 14px;
-    height: 30px;
-    line-height: 30px;
-    background-color: #ffffff;
-  }
-
-  .phone img {
-    width: 15px;
-    height: 15px;
-    margin-left: 20px;
-  }
-
-  .manager_msg {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    height: 45px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #f6f6f6;
-    border-bottom: 4px solid #F6F6F6;
-  }
-
-  .manager_msg .item {
-    width: 49%;
-    height: 45px;
-    background-color: #ffffff;
-    text-align: center;
-    line-height: 45px;
-  }
-
-  .manager_msg .item img {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-  }
-
-  .manager_msg .item span {
-    font-size: 14px;
-  }
-
-  /*订单列表*/
-  .order {
-    border-bottom: 1px solid #f6f6f6;
-    background-color: #ffffff;
-  }
-
-  .order .title {
-    border-top: 2px solid #f6f6f6;;
-    font-size: 14px;
-    border-bottom: 1px solid #ededef;
-    padding-left: 20px;
-    line-height: 30px;
-    height: 30px;
-  }
-
-  .order .order_list {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px 20px 10px 20px;
-    font-size: 14px;
-    position: relative;
-    border-bottom: 1px solid #ffffff;
-  }
-
-  .order .customer img {
-    width: 15px;
-    height: 15px;
-    vertical-align: middle;
   }
 
   .order .order_list .customer {
@@ -388,29 +404,6 @@
     position: absolute;
     right: 4%;
     top: 48%;
-  }
-
-  /*菜单列表*/
-  .menu-list {
-    font-size: 14px;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    background: #fff;
-    box-sizing: border-box;
-    text-align: center;
-    justify-content: space-around;
-    padding: 20px 0;
-  }
-
-  .menu-list img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .menu-list .menu-list-item p {
-    line-height: 25px;
-    height: 25px;
   }
 
 </style>

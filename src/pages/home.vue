@@ -1,83 +1,83 @@
 <template>
-    <div class="home">
-        <!--头部-->
-        <div class="header">
-            <div class="city">
-                <span>成都</span>
-                <img src="https://www.360myhl.com/meixinJF/static/images/open.png">
-            </div>
-            <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/logo.jpg" class="logo">-->
-          <img  class="logo" src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="">
-            <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
-        </div>
-        <!--轮播图-->
-        <div class="block">
-            <el-carousel height="150px">
-                <el-carousel-item v-for="item in imgUrls" :key="item">
-                    <img :src="item" alt="" style="width: 100%;">
-                </el-carousel-item>
-            </el-carousel>
-        </div>
-        <!--分类-->
-        <div class="classify">
-            <div class="classify-item" @click="getEachInfo(2)">
-                <img src="https://www.360myhl.com/meixinJF/static/images/yuesao1.png">
-                <span>月嫂</span>
-            </div>
-            <div class="classify-item" @click="getEachInfo(1)">
-                <img src="https://www.360myhl.com/meixinJF/static/images/baby-cart.png">
-                <span>育儿嫂</span>
-            </div>
-        </div>
-        <!--推荐订单标题-->
-        <div class="recommend">
-            <div class="Left">
-                <p><img src="https://www.360myhl.com/meixinJF/static/images/order_icon.png" alt="">推荐订单</p>
-            </div>
-            <div class="Right">恭喜张姐抢到<span>¥8000</span>育儿嫂订单</div>
-        </div>
-        <!--推荐订单列表-->
-        <div class="list">
-            <h3>月嫂</h3>
-            <div class="time">
-                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
-                </div>
-                <div class="price">13800元</div>
-            </div>
-            <div class="address">
-                <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-                <div class="Right1">已有<span>52</span>位护理员报名</div>
-            </div>
-        </div>
-        <div class="list">
-            <h3>月嫂</h3>
-            <div class="time">
-                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
-                </div>
-                <div class="price">13800元</div>
-            </div>
-            <div class="address">
-                <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-                <div class="Right1">已有<span>52</span>位护理员报名</div>
-            </div>
-        </div>
-        <div class="list">
-            <h3>月嫂</h3>
-            <div class="time">
-                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
-                </div>
-                <div class="price">13800元</div>
-            </div>
-            <div class="address">
-                <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-                <div class="Right1">已有<span>52</span>位护理员报名</div>
-            </div>
-        </div>
-        <!--<div class="order_list" v-if="No_data === true" style="display: flex;align-items: center">-->
-            <!--<span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>-->
-        <!--</div>-->
-        <tab-bar :select="this_path"></tab-bar>
+  <div class="home">
+    <!--头部-->
+    <div class="header">
+      <div class="city">
+        <span>成都</span>
+        <img src="https://www.360myhl.com/meixinJF/static/images/open.png">
+      </div>
+      <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/logo.jpg" class="logo">-->
+      <img class="logo" src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="">
+      <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
     </div>
+    <!--轮播图-->
+    <div class="block">
+      <el-carousel height="150px">
+        <el-carousel-item v-for="item in imgUrls" :key="item">
+          <img :src="item" alt="" style="width: 100%;">
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+    <!--分类-->
+    <div class="classify">
+      <div class="classify-item" @click="getEachInfo(2)">
+        <img src="https://www.360myhl.com/meixinJF/static/images/yuesao1.png">
+        <p>月嫂</p>
+      </div>
+      <div class="classify-item" @click="getEachInfo(1)">
+        <img src="https://www.360myhl.com/meixinJF/static/images/baby-cart.png">
+        <p>育儿嫂</p>
+      </div>
+    </div>
+    <!--推荐订单标题-->
+    <div class="recommend">
+      <div class="Left">
+        <p><img src="https://www.360myhl.com/meixinJF/static/images/order_icon.png" alt="">推荐订单</p>
+      </div>
+      <div class="Right">恭喜张姐抢到<span>¥8000</span>育儿嫂订单</div>
+    </div>
+    <!--推荐订单列表-->
+    <div class="list">
+      <h3>月嫂</h3>
+      <div class="time">
+        <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+        </div>
+        <div class="price">13800元</div>
+      </div>
+      <div class="address">
+        <div class="Left1">地 址：成都市武侯区环球中心S1</div>
+        <div class="Right1">已有<span>52</span>位护理员报名</div>
+      </div>
+    </div>
+    <div class="list">
+      <h3>月嫂</h3>
+      <div class="time">
+        <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+        </div>
+        <div class="price">13800元</div>
+      </div>
+      <div class="address">
+        <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
+        <div class="Right1">已有<span>52</span>位护理员报名</div>
+      </div>
+    </div>
+    <div class="list">
+      <h3>月嫂</h3>
+      <div class="time">
+        <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+        </div>
+        <div class="price">13800元</div>
+      </div>
+      <div class="address">
+        <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
+        <div class="Right1">已有<span>52</span>位护理员报名</div>
+      </div>
+    </div>
+    <!--<div class="order_list" v-if="No_data === true" style="display: flex;align-items: center">-->
+    <!--<span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>-->
+    <!--</div>-->
+    <tab-bar :select="this_path"></tab-bar>
+  </div>
 </template>
 
 <script>
@@ -88,7 +88,7 @@
     components: {
       tabBar
     },
-    data () {
+    data() {
       return {
         indicatorDots: true,
         autoplay: true,
@@ -127,183 +127,144 @@
   };
 </script>
 
-<style scoped>
+<style scoped lang="less">
+  .home {
     /* 头部 */
-    .home .header {
-        height: 50px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        padding: 10px;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
+    .header {
+      height: 0.93rem;
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0.14rem 0;
+      .city {
+        img {
+          width: 0.4rem;
+          height: 0.4rem;
+          vertical-align: middle;
+        }
+        span {
+          font-size: 0.3rem;
+          color: #000;
+          margin-right: 0.1rem;
+        }
+      }
+      .logo {
+        width: 3.37rem;
+        height: 1.67rem;
+        margin-left: -0.28rem;
+      }
+      .kefu {
+        width: 0.6rem;
+        height: 0.6rem;
+      }
     }
-
-    .home .header .city {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
-    .home .header .city img {
-        width: 10px;
-        height: 10px;
-    }
-
-    .home .header .city span {
-        font-size: 12px;
-        color: #000;
-        margin-right: 10px;
-    }
-
-    .home .header .logo {
-        width: 120px;
-        height: 60px;
-    }
-
-    .home .header .kefu {
-        width: 20px;
-        height: 20px;
-    }
-
     /* 轮播图 */
     .banner .page__bd {
-        width: 375px;
-        height: 150px;
+      width: 100%;
+      height: 1.5rem;
     }
-
     .banner .slide-image {
-        width: 100%;
-        height: 100%;
+      width: 100%;
+      height: 100%;
     }
-
     /* 分类 */
-    .home .classify {
-        position: relative;
-        height: 100px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
+    .classify {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0.5rem 0;
+      .classify-item {
+        img {
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+        p {
+          font-size: 0.33rem;
+          font-weight: normal;
+        }
+      }
     }
-
-    .home .classify-item {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        margin: 32px;
-    }
-
-    .home .classify-item img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .home .classify-item span {
-        font-size: 12px;
-    }
-
     /* 推荐订单 */
-    .home .recommend {
-        height: 30px;
-        line-height: 30px;
-        padding: 0 15px;
-        background-color: #f1f2f6;
+    .recommend {
+      background-color: #f1f2f6;
+      height: 0.94rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 5%;
+      .Left {
+        font-size: 0.38rem;
+        img {
+          width: 0.52rem;
+          height: 0.42rem;
+          vertical-align: sub;
+          padding-right: 0.09rem;
+        }
+      }
+      .Right {
+        font-size: 0.25rem;
+        span {
+          color: #ea5944;
+        }
+      }
     }
-
-    .home .recommend:after {
-        display: table;
-        content: "";
-        line-height: 0;
-    }
-
-    .home .recommend .Left {
-        float: left;
-        font-size: 14px;
-    }
-
-    .home .recommend .Left img {
-        float: left;
-        width: 10px;
-        height: 10px;
-        margin-top: 10px;
-        padding-right: 5px;
-    }
-
-    .home .recommend .Right {
-        float: right;
-        font-size: 12px;
-    }
-
-    .home .recommend .Right span {
-        color: #ea5944;
-    }
-
     /*推荐订单列表*/
-    .home .list {
-        background-color: #fff;
-        padding: 10px 12px 20px;
-        color: #848484;
-        height: 95px;
-        border-bottom: 5px solid #f1f2f6;
+    .list {
+      background-color: #fff;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 5%;
+      color: #848484;
+      height: 2.46rem;
+      border-bottom: 5px solid #f1f2f6;
     }
-
-    .home .list h3 {
-        font-size: 14px;
+    h3 {
+      font-size: 0.33rem;
+      font-weight: bold;
+      color: #000000;
+    }
+    .time {
+      line-height: 0.44rem;
+      display: flex;
+      justify-content: space-between;
+      .Left {
+        font-size: 0.29rem;
+      }
+      .price {
+        font-size: 0.42rem;
         font-weight: bold;
-        line-height: 20px;
-        color: #000000;
-    }
-
-    .home .list .time {
-        line-height: 20px;
-    }
-
-    .home .list .time .Left {
-        float: left;
-        font-size: 12px;
-    }
-
-    .home .list .time .price {
-        float: right;
-        font-size: 14px;
         color: #ea5944;
+      }
     }
-
-    .home .list .address {
-        line-height: 20px;
+    .address {
+      line-height: 0.44rem;
+      display: flex;
+      justify-content: space-between;
+      .Left1 {
+        width: 5rem;
+        overflow: hidden;
+        font-size: 0.29rem;
+      }
+      .Right1 {
+        font-size: 0.25rem;
+        span {
+          color: #ea5944;
+        }
+      }
     }
-
-    .home .list .address .Left1 {
-        float: left;
-        font-size: 12px;
-    }
-
-    .home .list .address .Right1 {
-        float: right;
-        font-size: 12px;
-    }
-
-    .home .list .address .Right1 span {
-        color: #ea5944;
-    }
+  }
 </style>
