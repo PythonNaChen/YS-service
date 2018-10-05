@@ -165,6 +165,7 @@
         height: 0.6rem;
       }
     }
+
     /* 轮播图 */
     .banner .page__bd {
       width: 100%;

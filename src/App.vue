@@ -5,12 +5,12 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  created() {
-    this.$router.push("/home");
+  export default {
+    name: 'app',
+    created() {
+      this.$router.push("/home");
+    }
   }
-}
 </script>
 
 <style>
@@ -25,6 +25,11 @@ export default {
 
   li {
     list-style: none;
+  }
+
+  /*banner*/
+  .el-carousel__container {
+    height: 4.65rem !important;
   }
 
   /* cube-ui 错误提示 样式调整 图标上移*/
