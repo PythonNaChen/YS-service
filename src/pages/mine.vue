@@ -4,7 +4,7 @@
     <div class="head">
       <div class="head_box">
         <div class="headIMG">
-          <img v-if="photo" :src="photo" alt="">
+          <img v-if="photo && photo !== 'null' " :src="photo" alt="">
           <img v-else src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">
         </div>
         <div class="userInfo">
@@ -112,12 +112,11 @@
     data() {
       return {
         this_path: null, // 当前路由，用于修改 tabBar 样式
-        data: null, // 用户信息
         OrderData: [], // 订单信息
-        photo: "", // 用户头像
         YNAME: "",
         YPHONE: "",
         phone: "",
+        photo: '',
         pcname: "", // 用户姓名
         customermobile: "", // 用户手机号
         className: '', // 用户等级
@@ -150,18 +149,22 @@
               }
             }
           );
-          console.log(data);
           if (data.data[0].customermobile === '') {
             this.$router.push('/login');
           } else {
-            console.log("mine-data:", data);
-            this.photo = data.data[0].wxphoto;
-            this.pcname = data.data[0].pcname;
+            if (data.data[0].wxphoto) {
+              this.photo = data.data[0].wxphoto;
+            } else {
+              this.photo = false
+            }
+            console.log('keyword', this.photo === null);
+            console.log('string', this.photo === 'null');
+            this.pcname =  data.data[0].pcname;
             this.YPHONE = data.data[0].YPHONE;
-            this.phone = data.data[0].phone;
-            this.YNAME = data.data[0].YNAME;
-            this.className = data.data[0].className;
-            this.customermobile = data.data[0].customermobile;
+            this.phone =  data.data[0].phone;
+            this.YNAME =  data.data[0].YNAME;
+            this.className =  data.data[0].className;
+            this.customermobile =  data.data[0].customermobile;
           }
         }
       },
