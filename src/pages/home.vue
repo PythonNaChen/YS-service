@@ -1,83 +1,84 @@
 <template>
-  <div class="home">
-    <!--头部-->
-    <div class="header">
-      <div class="city">
-        <span>成都</span>
-        <img src="https://www.360myhl.com/meixinJF/static/images/open.png">
-      </div>
-      <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/logo.jpg" class="logo">-->
-      <img class="logo" src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="">
-      <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
-    </div>
-    <!--轮播图-->
-    <div class="block">
-      <el-carousel height="150px">
-        <el-carousel-item v-for="item in imgUrls" :key="item">
-          <img :src="item" alt="" style="width: 100%;">
-        </el-carousel-item>
-      </el-carousel>
-    </div>
-    <!--分类-->
-    <div class="classify">
-      <div class="classify-item" @click="getEachInfo(2)">
-        <img src="https://www.360myhl.com/meixinJF/static/images/yuesao1.png">
-        <p>月嫂</p>
-      </div>
-      <div class="classify-item" @click="getEachInfo(1)">
-        <img src="https://www.360myhl.com/meixinJF/static/images/baby-cart.png">
-        <p>育儿嫂</p>
-      </div>
-    </div>
-    <!--推荐订单标题-->
-    <div class="recommend">
-      <div class="Left">
-        <p><img src="https://www.360myhl.com/meixinJF/static/images/order_icon.png" alt="">推荐订单</p>
-      </div>
-      <div class="Right">恭喜张姐抢到<span>¥8000</span>育儿嫂订单</div>
-    </div>
-    <!--推荐订单列表-->
-    <div class="list">
-      <h3>月嫂</h3>
-      <div class="time">
-        <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+    <div class="home">
+        <!--头部-->
+        <div class="header">
+            <div class="city">
+                <span>成都</span>
+                <img src="https://www.360myhl.com/meixinJF/static/images/open.png">
+            </div>
+            <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/logo.jpg" class="logo">-->
+          <img  class="logo" src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="">
+            <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
         </div>
-        <div class="price">13800元</div>
-      </div>
-      <div class="address">
-        <div class="Left1">地 址：成都市武侯区环球中心S1</div>
-        <div class="Right1">已有<span>52</span>位护理员报名</div>
-      </div>
-    </div>
-    <div class="list">
-      <h3>月嫂</h3>
-      <div class="time">
-        <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+        <!--轮播图-->
+        <div class="block">
+            <el-carousel height="150px">
+                <el-carousel-item v-for="item in imgUrls" :key="item">
+                    <img :src="item" alt="" style="width: 100%;">
+                </el-carousel-item>
+            </el-carousel>
         </div>
-        <div class="price">13800元</div>
-      </div>
-      <div class="address">
-        <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-        <div class="Right1">已有<span>52</span>位护理员报名</div>
-      </div>
-    </div>
-    <div class="list">
-      <h3>月嫂</h3>
-      <div class="time">
-        <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+        <!--分类-->
+        <div class="classify">
+            <div class="classify-item" @click="getEachInfo(2)">
+                <img src="https://www.360myhl.com/meixinJF/static/images/yuesao1.png">
+                <p>月嫂</p>
+            </div>
+            <div class="classify-item" @click="getEachInfo(1)">
+                <img src="https://www.360myhl.com/meixinJF/static/images/baby-cart.png">
+                <p>育儿嫂</p>
+            </div>
         </div>
-        <div class="price">13800元</div>
-      </div>
-      <div class="address">
-        <div class="Left1" style="width: 200px; overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-        <div class="Right1">已有<span>52</span>位护理员报名</div>
-      </div>
+        <!--推荐订单标题-->
+        <div class="recommend">
+            <div class="Left">
+                <p><img src="https://www.360myhl.com/meixinJF/static/images/order_icon.png" alt="">推荐订单</p>
+            </div>
+            <div class="Right">恭喜张姐抢到<span>¥8000</span>育儿嫂订单</div>
+        </div>
+        <!--推荐订单列表-->
+        <div class="list">
+            <h3>月嫂</h3>
+            <div class="time">
+                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+                </div>
+                <div class="price">13800元</div>
+            </div>
+            <div class="address">
+                <div class="Left1" style="overflow: hidden">地 址：成都市武侯区环球中心S1</div>
+                <div class="Right1">已有<span>52</span>位护理员报名</div>
+            </div>
+        </div>
+        <div class="list">
+            <h3>月嫂</h3>
+            <div class="time">
+                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+                </div>
+                <div class="price">13800元</div>
+            </div>
+            <div class="address">
+                <div class="Left1" style="overflow: hidden">地 址：成都市武侯区环球中心S1</div>
+                <div class="Right1">已有<span>52</span>位护理员报名</div>
+            </div>
+        </div>
+        <div class="list">
+            <h3>月嫂</h3>
+            <div class="time">
+                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+                </div>
+                <div class="price">13800元</div>
+            </div>
+            <div class="address">
+                <div class="Left1" style="overflow: hidden">地 址：成都市武侯区环球中心S1</div>
+                <div class="Right1">已有<span>52</span>位护理员报名</div>
+            </div>
+        </div>
+        <!--<div class="order_list" v-if="No_data === true" style="display: flex;align-items: center">-->
+            <!--<span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>-->
+        <!--</div>-->
+      <div id="box" style="height: 1.26rem;"></div>
+        <tab-bar :select="this_path"></tab-bar>
     </div>
-    <!--<div class="order_list" v-if="No_data === true" style="display: flex;align-items: center">-->
-    <!--<span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>-->
-    <!--</div>-->
-    <tab-bar :select="this_path"></tab-bar>
-  </div>
 </template>
 
 <script>
@@ -88,7 +89,7 @@
     components: {
       tabBar
     },
-    data() {
+    data () {
       return {
         indicatorDots: true,
         autoplay: true,
@@ -128,7 +129,7 @@
 </script>
 
 <style scoped lang="less">
-  .home {
+    .home {
     /* 头部 */
     .header {
       height: 0.93rem;
@@ -165,7 +166,6 @@
         height: 0.6rem;
       }
     }
-
     /* 轮播图 */
     .banner .page__bd {
       width: 100%;
@@ -256,8 +256,6 @@
       display: flex;
       justify-content: space-between;
       .Left1 {
-        width: 5rem;
-        overflow: hidden;
         font-size: 0.29rem;
       }
       .Right1 {
