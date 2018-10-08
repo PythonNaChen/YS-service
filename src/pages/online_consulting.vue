@@ -4,7 +4,7 @@
             <button class="enterSession" open-type="contact" session-from="weapp">进入客服会话</button>
         </a>
 
-        <a href="tel:4000-360-028">
+        <a href="tel:4000360028">
             <button class="call" type="default">拨打电话</button>
         </a>
 
