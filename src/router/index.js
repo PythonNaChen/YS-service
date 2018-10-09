@@ -20,6 +20,9 @@ const dataDetail = r => require.ensure([], () => r(require("@/pages/dataDetail.v
 const collection = r => require.ensure([], () => r(require('@/pages/collection.vue')), 'collection'); // 月嫂详情页
 const order_list = r => require.ensure([], () => r(require('@/pages/order_list.vue')), 'order_list'); // 月嫂详情页
 
+// 护理员档期
+const schedule = r => require.ensure([], () => r(require('@/pages/schedule.vue')), 'schedule');
+
 export default new Router({
   routes: [
     // tabBar 首页
@@ -75,6 +78,12 @@ export default new Router({
       path: "/order_list",
       name: "order_list",
       component: order_list
+    },
+    // 护理员档期
+    {
+      path: "/schedule",
+      name: "schedule",
+      component: schedule
     }
   ]
 });

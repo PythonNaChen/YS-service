@@ -1,5 +1,5 @@
 <template>
-    <div class="yuesao-index" style="font-weight: 800;">
+    <div class="yuesao-index" style="font-weight: 800;" v-if="data">
         <!--返回上一页-->
         <div class="goBack" @click="goBack()">
             <img src="../assets/images/white-back.png" alt="">
@@ -22,7 +22,7 @@
                         <!--<span>服务过46户</span>-->
                     </p>
                     <!--<a class="watch_detail" href="/static/rili.html">查看档期</a>-->
-                    <a class="watch_detail" href="http://www.360myhl.com/meixinJF/hly/static/rili.html">查看档期</a>
+                    <p class="watch_detail" @click="goSchedule()">查看档期</p>
                 </div>
             </div>
             <div class="header_bottom">
@@ -565,6 +565,10 @@
       getBirthday() {
         this.birthday = this.data.idcard.slice(8, 14);
         // console.log(this.birthday);
+      },
+      // 跳转档期页面
+      goSchedule(){
+        this.$router.push('/schedule')
       }
     },
     created() {

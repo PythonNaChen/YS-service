@@ -44,8 +44,8 @@
     <div class="order">
       <div class="title">订单列表</div>
       <!-- 有数据 -->
-      <div class="customer" v-if="No_data === true" v-for="(item, index) in OrderData" :key="index">
-        <div class="order_list">
+      <div class="order_list" v-if="No_data === true" v-for="(item, index) in OrderData" :key="index">
+        <div class="customer">
           <span class="lable" v-if="item.typs===1">月嫂</span>
           <span class="lable" v-if="item.typs===2">育儿嫂</span>
           <span class="lable2">客户：{{item.customername}}</span>
@@ -333,23 +333,49 @@
         line-height: 0.68rem;
         height: 0.68rem;
       }
-      .customer {
-        .order_list {
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          padding: 10px 20px 10px 20px;
-          font-size: 14px;
-          position: relative;
-          border-bottom: 1px solid #ffffff;
+      .order_list {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0.45rem 1.04rem 0 0.82rem;
+        position: relative;
+        font-size: 0.36rem;
+        border-bottom: 1px solid #ffffff;
+        .customer {
+          margin-bottom: 0.25rem;
+          height: 0.4rem;
+          line-height: 0.4rem;
+          .lable {
+            font-size: 0.32rem;
+            color: #ffffff;
+            background-color: #ea5a43;
+            padding: 0.03rem 0.07rem;
+            border-radius: 0.05rem;
+            margin-right: 0.15rem;
+          }
+          .lable2 {
+            font-size: 0.36rem;
+          }
+        }
+        .time {
+          height: 0.7rem;
+          line-height: 0.7rem;
+        }
+        .state {
+          height: 0.7rem;
+          line-height: 0.7rem;
+        }
+        .rightTo {
+          position: absolute;
+          top: 37%;
+          right: 5%;
         }
         img {
-          width: 15px;
-          height: 15px;
+          width: 0.45rem;
+          height: 0.43rem;
           vertical-align: middle;
         }
       }
-
     }
     /*菜单列表*/
     .menu-list {
@@ -362,6 +388,7 @@
       text-align: center;
       justify-content: space-around;
       padding: 0.67rem 0;
+      margin-bottom: 2rem;
       .menu-list-item {
         p {
           line-height: 0.6rem;
@@ -393,13 +420,11 @@
   .order .time {
     height: 30px;
     line-height: 30px;
-    padding-left: 20px;
   }
 
   .order .state {
     height: 30px;
     line-height: 30px;
-    padding-left: 20px;
     margin-bottom: 20px;
   }
 
