@@ -8,7 +8,9 @@
             </div>
             <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/logo.jpg" class="logo">-->
             <img class="logo" src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="">
-            <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
+            <a href="tel:4000360028">
+                <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
+            </a>
         </div>
         <!--轮播图-->
         <div class="block">
@@ -42,45 +44,29 @@
             <div class="Right">恭喜张姐抢到<span>¥8000</span>育儿嫂订单</div>
         </div>
         <!--推荐订单列表-->
-        <div class="list">
-            <h3>月嫂</h3>
+        <div class="list" v-for="(item, index) in data" :key="index" @click="goOrderDetail(item.oid)"
+             v-if="data">
+            <h3 v-if="item.typs === 2">{{item.JBID}}月嫂</h3>
+            <h3 v-if="item.typs === 1">{{item.JBID}}育儿嫂</h3>
             <div class="time">
-                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
+                <div class="Left" v-if="item.typs === 2"><span>预产期：{{item.expecteddate}}</span><span>  时长：26天</span>
                 </div>
-                <div class="price">13800元</div>
+                <div class="Left" v-if="item.typs === 1">
+                    <span v-if="item.stime === '' || item.stime === null">上班时间：<span
+                            style="color: red">立即到岗</span></span>
+                    <span v-if="item.stime">上班时间：{{item.stime}}</span><span>  时长：26天</span>
+                </div>
+                <div class="price" v-if="item.typs === 2">{{item.att_yue_price}}元</div>
+                <div class="price" v-if="item.typs === 1">{{item.att_yu_price}}元</div>
             </div>
             <div class="address">
-                <div class="Left1" style="overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-                <div class="Right1">已有<span>52</span>位护理员报名</div>
+                <div class="Left1" style="width: 200px; overflow: hidden">地 址：{{item.address}}</div>
+                <div class="Right1">已有<span>{{item.nums}}</span>位护理员报名</div>
             </div>
         </div>
-        <div class="list">
-            <h3>月嫂</h3>
-            <div class="time">
-                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
-                </div>
-                <div class="price">13800元</div>
-            </div>
-            <div class="address">
-                <div class="Left1" style="overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-                <div class="Right1">已有<span>52</span>位护理员报名</div>
-            </div>
+        <div class="order_list" v-else style="display: flex;align-items: center">
+            <span style="color: #ea5a43; width: 100px;margin: 30px auto 0;text-align: center;font-size: 0.5rem;">暂无数据...</span>
         </div>
-        <div class="list">
-            <h3>月嫂</h3>
-            <div class="time">
-                <div class="Left"><span>预产期：1997-03-23</span><span>  时长：26天</span>
-                </div>
-                <div class="price">13800元</div>
-            </div>
-            <div class="address">
-                <div class="Left1" style="overflow: hidden">地 址：成都市武侯区环球中心S1</div>
-                <div class="Right1">已有<span>52</span>位护理员报名</div>
-            </div>
-        </div>
-        <!--<div class="order_list" v-if="No_data === true" style="display: flex;align-items: center">-->
-        <!--<span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>-->
-        <!--</div>-->
         <div id="box" style="height: 1.26rem;"></div>
         <tab-bar :select="this_path"></tab-bar>
     </div>
@@ -88,6 +74,7 @@
 
 <script>
   import tabBar from "../components/tabbar";
+  import axios from 'axios';
 
   export default {
     name: "home",
@@ -108,27 +95,46 @@
         ],
         openid: "",
         data: null,
-        No_data: false
       };
     },
     methods: {
+      // tabBar 激活样式
       getPath() {
         this.this_path = this.$route.path.slice(1);
+      },
+      // 跳转到报名列表
+      goOrderDetail(id){
+        this.$router.push(`/detail_list?orderid=${id}&id=${localStorage.getItem('queryId')}`)
+      },
+      // 获取订单列表
+      async getEachInfo(type){
+        let res = await axios.get(
+          "/meixinJF/xcx/gxIndex",
+          {
+            params: {
+              id: localStorage.getItem("queryId"),
+              typs: type
+            }
+          }
+        );
+        if (res) {
+          for (let i = 0; i < res.data.length; i++) {
+            if (res.data[i].stime) {
+              res.data[i].stime = res.data[i].stime.slice(0, 10);
+            }
+          }
+          for (let i = 0; i < res.data.length; i++) {
+            if (res.data[i].expecteddate) {
+              res.data[i].expecteddate = res.data[i].expecteddate.slice(0, 10);
+            }
+          }
+          this.data = res.data
+        }
       }
-      // async getEachInfo(type){
-      //   let data = await axios.get(
-      //     "/meixinJF/xcx/gxIndex",
-      //     {
-      //       params: {
-      //         id: this.$route.query.id,
-      //         typs: type
-      //       }
-      //     }
-      //   );
-      // }
     },
     created() {
       this.getPath();
+      this.getEachInfo(1);
     }
   };
 </script>

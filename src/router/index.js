@@ -22,6 +22,8 @@ const order_list = r => require.ensure([], () => r(require('@/pages/order_list.v
 
 // 护理员档期
 const schedule = r => require.ensure([], () => r(require('@/pages/schedule.vue')), 'schedule');
+// 订单报名
+const detail_list = r => require.ensure([], () => r(require('@/pages/detail_list.vue')), 'detail_list');
 
 export default new Router({
   routes: [
@@ -84,6 +86,12 @@ export default new Router({
       path: "/schedule",
       name: "schedule",
       component: schedule
+    },
+    // 订单报名
+    {
+      path: "/detail_list",
+      name: "detail_list",
+      component: detail_list
     }
   ]
 });
