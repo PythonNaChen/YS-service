@@ -288,20 +288,64 @@
         <!--</ul>-->
         <!--</div>-->
         <!--底部按钮-->
-        <!--<div class="footer">-->
-        <!--<div class="footer-item">-->
-        <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/collection_icon_normal.png">-->
-        <!--<p>收藏</p>-->
-        <!--</div>-->
-        <!--<div class="footer-item">-->
-        <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/consultation_icon_normal.png">-->
-        <!--<p>咨询</p>-->
-        <!--</div>-->
-        <!--<div class="footer-item">-->
-        <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/bespeak_icon_normal.png">-->
-        <!--<p>预约</p>-->
-        <!--</div>-->
-        <!--</div>-->
+        <div class="footer">
+            <div class="footer-item" @click="makeCollection()">
+                <img v-if="!isCollection" src="http://www.360myhl.com/meixinJF/MM/ximg/collection_icon_normal.png">
+                <img v-else src="../assets/images/collection_icon_active.png" alt="">
+                <p :class="{Active: isCollection}">收藏</p>
+            </div>
+            <div class="footer-item">
+                <a href="https://det.zoosnet.net/LR/Chatpre.aspx?id=DET73714216&lng=cn">
+                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/consultation_icon_normal.png">
+                </a>
+                <p>咨询</p>
+            </div>
+            <div class="footer-item" @click="openAppointment()">
+                <img src="http://www.360myhl.com/meixinJF/MM/ximg/bespeak_icon_normal.png">
+                <p>预约</p>
+            </div>
+        </div>
+        <!--预约面试的弹框-->
+        <div class="Appointment" v-if="appointmentDialog">
+            <div class="AppointmentDialog">
+                <!--方式 单选-->
+                <div class="selectionMethods">
+                    <span @click="showPicker">
+                        {{showSelectedMode}}<img style="margin-left: 5px;"
+                                                 src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
+                    </span>
+                </div>
+                <!--日期-->
+                <div class="selectionMethods">
+                    <span @click="showDatePicker">
+                        {{selectedDate}} <img src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
+                    </span>
+                </div>
+                <!--省市区-->
+                <div class="address">
+                    <!--<weui-distpicker-->
+                    <!--:province="message.province"-->
+                    <!--:city="message.city"-->
+                    <!--:area="message.area"></weui-distpicker>-->
+                    <input v-model="selectedProvince" placeholder="省" type="text"><img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
+                    <input v-model="selectedCity" placeholder="市" type="text"><img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
+                    <input v-model="selectedArea" placeholder="区" type="text"><img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
+                </div>
+                <!--联系电话-->
+                <div class="inputPhoneNumber">
+                    <span>联系电话</span>
+                    <input type="tel" placeholder="联系电话" maxlength="11" v-model="contactNumber">
+                </div>
+                <!--详细地址-->
+                <div class="address_details">
+                    <span>详细地址</span>
+                    <input type="tel" placeholder="街道、楼牌号等" v-model="detailAddress">
+                </div>
+                <div class="immediateReservation" @click="immediateReservation()">立即预约</div>
+                <div class="cancel" @click="cancelFn()">取消</div>
+            </div>
+            <div class="AppointmentMask"></div>
+        </div>
 
         <!-- 精选留言 -->
         <!--<div class="leaving_msg">-->
@@ -427,9 +471,17 @@
 
 <script>
   import axios from "axios";
+  import WeuiDistpicker from 'weui-distpicker'
+
+  const column1 = [
+    { text: "到店面试", value: "1" },
+    { text: "视频面试", value: "2" },
+    { text: "上门面试", value: "3" }
+  ];
 
   export default {
     name: "index",
+    components: { WeuiDistpicker },
     data() {
       return {
         customIndex: 1,//图片预览索引
@@ -439,7 +491,22 @@
         birthday: "", // 从身份证中提取的年月日
         Yid: "", //月嫂id
         urlPrefix: "http://www.360myhl.com/meixinJF/img/",
-        priceType: null //月嫂價格
+        priceType: null, //月嫂價格
+        isCollection: false, // 收藏图标样式切换
+        appointmentDialog: false, // 预约的弹框
+        selectedDate: "请选择日期", // 选中的日期
+        showSelectedMode: '预约方式', // 预约回显的数据
+        message: {
+          province: '广东省',
+          city: '广州市',
+          area: '海珠区'
+        },
+        selectedProvince: "", // 选中的 省
+        selectedCity: "", // 选中的 市
+        selectedArea: "", // 选中的 区
+        detailAddress: "", // 街道地址详情，用于数据双向绑定 v-model
+        completeAddress: "", // 省、市、区 + 街道详情 的 数据拼接，用于提交给后台 （string）
+        contactNumber: "", // 预约者的联系方式，用于数据双向绑定 v-model
       };
     },
     methods: {
@@ -556,7 +623,100 @@
       // 跳转档期页面
       goSchedule(){
         this.$router.push('/schedule')
-      }
+      },
+      // 收藏功能
+      async makeCollection(){
+        this.isCollection = !this.isCollection; // 图标切换
+      },
+      // 打开预约面试的弹框
+      openAppointment() {
+        console.log(this.appointmentDialog);
+        this.appointmentDialog = !this.appointmentDialog;
+      },
+      // 预约面试选择器
+      showPicker() {
+        if (!this.picker) {
+          this.picker = this.$createPicker({
+            title: 'Picker',
+            data: [column1],
+            onSelect: this.selectHandle,
+            onCancel: this.cancelHandle
+          })
+        }
+        this.picker.show()
+      },
+      selectHandle(selectedVal, selectedIndex, selectedText) {
+        this.showSelectedMode = selectedText[0]
+      },
+      // 时间选择器
+      showDatePicker() {
+        if (!this.datePicker) {
+          this.datePicker = this.$createDatePicker({
+            title: 'Date Picker',
+            min: new Date(2008, 7, 8),
+            max: new Date(2020, 9, 20),
+            value: new Date(),
+            onSelect: this.selectDateHandle,
+            onCancel: this.cancelHandle
+          })
+        }
+        this.datePicker.show()
+      },
+      selectDateHandle(date, selectedVal, selectedText) {
+        this.selectedDate = `${selectedText[0]}-${selectedText[1]}-${selectedText[2]}`
+      },
+      cancelHandle() {
+        this.$createToast({
+          type: 'correct',
+          txt: 'Picker canceled',
+          time: 1000
+        }).show()
+      },
+
+      // 确认立即预约
+      async immediateReservation() {
+        // 完整的 省、市、区 + 街道详情 的 数据拼接，用于提交给后台 （string）
+        this.completeAddress = this.selectedProvince + "," + this.selectedCity + "," + this.selectedArea + "," + this.detailAddress;
+        console.log("this.selectedMode(服务方式)", this.selectedMode);
+        console.log("this.selectedDate(预约期)", this.selectedDate);
+        console.log("this.contactNumber(手机号)", this.contactNumber);
+        console.log("this.completeAddress(地址)", this.completeAddress);
+
+        let res = await axios.post(
+          "/meixinJF/xcx/businessADD?customermobile=" + this.contactNumber + "&customersource=8849a6eb32974a59b19d8b6bb2c7d384" + "&customersourcemode=e55e05d95a5643c4af723de35fdb9e52" + "&demandtime=" + this.selectedDate + "&yyLX=" + this.showSelectedMode + "&customerremark=" + this.name + "&address=" + this.completeAddress,
+          // {
+          //     customermobile: this.contactNumber,
+          //     customersource: "8849a6eb32974a59b19d8b6bb2c7d384",
+          //     customersourcemode: "e55e05d95a5643c4af723de35fdb9e52",
+          //     demandtime: this.selectedDate,
+          //     yyLX: this.showSelectedMode,
+          //     customerremark: this.name,
+          //     address: this.completeAddress
+          // },
+          {
+            headers: {
+              /*"content-type": "application/json" // 默认值*/
+              "content-type": "application/x-www-form-urlencoded;charset=utf-8"
+            }
+          }
+        );
+        if (res) {
+          this.openAlert();
+        }
+      },
+      // 预约成功的提示
+      openAlert() {
+        const toast = this.$createToast({
+          txt: "恭喜您，预约成功！",
+          type: "success"
+        });
+        toast.show();
+        this.appointmentDialog = !this.appointmentDialog;
+      },
+      // 点击取消后关闭预约面试框
+      cancelFn() {
+        this.appointmentDialog = !this.appointmentDialog;
+      },
     },
     created() {
       console.log("传递过来的id", this.$route.query.id);
@@ -574,6 +734,9 @@
 </script>
 
 <style scoped>
+    .Active{
+        color: #ea5a43;
+    }
     /*返回上一页*/
     .goBack {
         position: absolute;
@@ -1071,11 +1234,7 @@
 
     /* 底部按钮 */
     .yuesao-index .footer {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
         align-items: center;
         height: 55px;
         -webkit-box-shadow: 0 0 0.1481481481rem rgba(0, 0, 0, 0.15);
@@ -1083,12 +1242,12 @@
         padding: 0 .6814814815rem;
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
-        justify-content: space-between;
+        justify-content: space-around;
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        background: #fff;
+        background: #e0e1e3;
     }
 
     .yuesao-index .footer-item {
@@ -1111,6 +1270,141 @@
         width: 24px;
         height: 24px;
     }
+
+    .yuesao-index .footer P {
+        font-weight: normal;
+    }
+
+    /*预约面试的弹框*/
+    .Appointment .AppointmentDialog {
+        background-color: #fff;
+        height: 60vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        font-size: 14px;
+    }
+
+    .Appointment .AppointmentDialog img {
+        width: 15px;
+        height: 8px;
+        vertical-align: middle;
+    }
+
+    .Appointment .AppointmentDialog .selectionMethods, .address {
+        width: 80%;
+        text-align: center;
+        margin: 10px auto 0;
+    }
+    .Appointment .AppointmentDialog .address{
+        display: flex;
+        align-items: center;
+        border: 2px solid #e25949;
+        padding: 10px;
+        border-radius: 7px;
+    }
+    .Appointment .AppointmentDialog .address input{
+        width: 20%;
+        border: none;
+        outline: none;
+        text-align: right;
+    }
+    .Appointment .AppointmentDialog .address img{
+        vertical-align: middle;
+    }
+
+    .Appointment .AppointmentDialog .inputPhoneNumber, .address_details {
+        border: 2px solid #e25949;
+        width: 80%;
+        margin: 10px auto 0;
+        display: flex;
+        border-radius: 7px;
+        padding: 8px 0;
+    }
+
+    .Appointment .AppointmentDialog .inputPhoneNumber span, .address_details span {
+        padding-left: 13px;
+        padding-right: 10px;
+        border-right: 1px solid #cfcfcf;
+        line-height: 25px;
+        width: 90px;
+        text-align: center;
+    }
+
+    .Appointment .AppointmentDialog .inputPhoneNumber input {
+        padding-left: 10px;
+        font-size: 14px;
+        color: #757575;
+        outline: none;
+        border: none;
+    }
+
+    .Appointment .AppointmentDialog .address_details input {
+        padding-left: 10px;
+        font-size: 14px;
+        color: #757575;
+        outline: none;
+        border: none;
+    }
+
+    .Appointment .AppointmentDialog .selectionMethods span {
+        border: 2px solid #e25949;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-radius: 7px;
+        padding: 10px 0;
+    }
+
+    .Appointment .AppointmentDialog .address span {
+        border: 2px solid #e25949;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-radius: 7px;
+        padding: 10px 0;
+        justify-content: space-between;
+    }
+
+    .Appointment .AppointmentDialog .address span img {
+        padding-right: 30px;
+    }
+
+    .Appointment .AppointmentDialog .immediateReservation {
+        background-color: #eb5b43;
+        color: #ffffff;
+        width: 80%;
+        margin: 10px auto 0;
+        border-radius: 7px;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .Appointment .AppointmentDialog .cancel {
+        background-color: #797979;
+        color: #ffffff;
+        width: 80%;
+        margin: 10px auto 0;
+        border-radius: 7px;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .Appointment .AppointmentMask {
+        background-color: #000000;
+        opacity: 0.8;
+        width: 100vh;
+        height: 40vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+
     /* 留言 和 技能 */
     .leaving_msg .title {
         height: 20px;

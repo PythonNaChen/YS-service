@@ -196,6 +196,7 @@
             box-sizing: border-box;
             padding: 0.5rem 0;
             position: relative;
+            background-color: #fff;
             .classify-item {
                 img {
                     width: 1.7rem;
