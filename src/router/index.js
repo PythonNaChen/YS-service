@@ -24,6 +24,10 @@ const order_list = r => require.ensure([], () => r(require('@/pages/order_list.v
 const schedule = r => require.ensure([], () => r(require('@/pages/schedule.vue')), 'schedule');
 // 订单报名
 const detail_list = r => require.ensure([], () => r(require('@/pages/detail_list.vue')), 'detail_list');
+// 订单详情
+const orderDetails = r => require.ensure([], () => r(require('@/pages/orderDetails.vue')), 'orderDetails');
+// 订单详情
+const signUp = r => require.ensure([], () => r(require('@/pages/signUp.vue')), 'signUp');
 
 export default new Router({
   routes: [
@@ -92,6 +96,18 @@ export default new Router({
       path: "/detail_list",
       name: "detail_list",
       component: detail_list
-    }
+    },
+    // 订单详情
+    {
+      path: "/orderDetails",
+      name: "orderDetails",
+      component: orderDetails
+    },
+    // 报名
+    {
+      path: "/signUp",
+      name: "signUp",
+      component: signUp
+    },
   ]
 });

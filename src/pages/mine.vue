@@ -3,7 +3,7 @@
     <!--头部信息-->
     <div class="head">
       <div class="head_box">
-        <div class="headIMG">
+        <div class="headIMG" @click="goOrderDetails()">
           <img v-if="photo && photo !== 'null' " :src="photo" alt="">
           <img v-else src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">
         </div>
@@ -93,7 +93,7 @@
         <img src="http://www.360myhl.com/meixinJF/MM/ximg/order.png" class="img2">
         <p>订单</p>
       </div>
-      <div class="menu-list-item">
+      <div class="menu-list-item" @click="goSignUp()">
         <img src="http://www.360myhl.com/meixinJF/MM/ximg/signUp.png" class="img2">
         <p>报名</p>
       </div>
@@ -137,6 +137,10 @@
           path: "/order_list?status=" + 0
         });
       },
+      // 跳转到 报名 列表
+      goSignUp(){
+        this.$router.push('/SignUp')
+      },
       // 获取用户信息
       async getUserInfo() {
         let queryId = localStorage.getItem("queryId");
@@ -157,8 +161,6 @@
             } else {
               this.photo = false
             }
-            console.log('keyword', this.photo === null);
-            console.log('string', this.photo === 'null');
             this.pcname =  data.data[0].pcname;
             this.YPHONE = data.data[0].YPHONE;
             this.phone =  data.data[0].phone;
@@ -211,6 +213,10 @@
             id: localStorage.getItem("queryId")
           }
         });
+      },
+      // 跳转到 订单详情 列表
+      goOrderDetails() {
+        this.$router.push("/orderDetails")
       }
     },
     created() {

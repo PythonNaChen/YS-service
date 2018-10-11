@@ -523,19 +523,6 @@
           }
         }
       },
-      // 获取档期
-      async getSchedule() {
-        let res = await axios.get(
-          "/meixinJF/xcx/ht?attendantsid=1",
-          {
-            params: {}
-          }
-        );
-        if (res) {
-          console.log("档期", res.data);
-          localStorage.setItem('scheduleDate', res.data)
-        }
-      },
       // 获取月嫂个人信息
       async requestPersonalDetail(Yid) {
         let res = await axios.get(
