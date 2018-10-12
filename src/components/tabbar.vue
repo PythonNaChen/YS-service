@@ -4,10 +4,10 @@
       <img src="../assets/images/index_icon_active.png" alt="" slot="active">
       <img src="../assets/images/index_icon_normal.png" alt="" slot="normal">
     </item>
-    <!--<item title="咪嘛课堂" mark="mima_classroom" @option="getValue" :sel="select">-->
-    <!--<img src="../assets/images/mimaClassroom_icon_active.png" alt="" slot="active">-->
-    <!--<img src="../assets/images/mimaClassroom_icon_normal.png" alt="" slot="normal">-->
-    <!--</item>-->
+    <item title="咪嘛课堂" mark="mima_classroom" @option="getValue" :sel="select">
+      <img src="../assets/images/mimaClassroom_icon_active.png" alt="" slot="active">
+      <img src="../assets/images/mimaClassroom_icon_normal.png" alt="" slot="normal">
+    </item>
     <item title="在线咨询" mark="online_consulting" @option="getValue" :sel="select">
     <img src="../assets/images/onlineConsulting_icon_active.png" alt="" slot="active">
     <img src="../assets/images/onlineConsulting_icon_normal.png" alt="" slot="normal">
@@ -28,15 +28,16 @@
       item
     },
     data() {
-      return {};
+      return {
+        select: 'home'
+      };
     },
     methods: {
       getValue(n) {
-        // this.select = n;
+        this.select = n;
       },
     },
     computed: {},
-    props: ["select"]
   };
 </script>
 
@@ -64,11 +65,10 @@
     padding: 5px 0 3px;
     border-top: 1px solid #b0b0b2;
     color: #999999;
-    display: flex;
-    justify-content: space-evenly;
   }
 
   .tab_wrap li {
+    width: 25%;
     text-align: center;
     font-size: 0.24rem;
   }

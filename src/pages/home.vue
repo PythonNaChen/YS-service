@@ -68,19 +68,14 @@
             <span style="color: #ea5a43; width: 100px;margin: 30px auto 0;text-align: center;font-size: 0.5rem;">暂无数据...</span>
         </div>
         <div id="box" style="height: 1.26rem;"></div>
-        <tab-bar :select="this_path"></tab-bar>
     </div>
 </template>
 
 <script>
-  import tabBar from "../components/tabbar";
   import axios from 'axios';
 
   export default {
     name: "home",
-    components: {
-      tabBar
-    },
     data() {
       return {
         indicatorDots: true,

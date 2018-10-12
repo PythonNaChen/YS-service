@@ -287,24 +287,6 @@
         <!--</li>-->
         <!--</ul>-->
         <!--</div>-->
-        <!--底部按钮-->
-        <div class="footer">
-            <div class="footer-item" @click="makeCollection()">
-                <img v-if="!isCollection" src="http://www.360myhl.com/meixinJF/MM/ximg/collection_icon_normal.png">
-                <img v-else src="../assets/images/collection_icon_active.png" alt="">
-                <p :class="{Active: isCollection}">收藏</p>
-            </div>
-            <div class="footer-item">
-                <a href="https://det.zoosnet.net/LR/Chatpre.aspx?id=DET73714216&lng=cn">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/consultation_icon_normal.png">
-                </a>
-                <p>咨询</p>
-            </div>
-            <div class="footer-item" @click="openAppointment()">
-                <img src="http://www.360myhl.com/meixinJF/MM/ximg/bespeak_icon_normal.png">
-                <p>预约</p>
-            </div>
-        </div>
         <!--预约面试的弹框-->
         <div class="Appointment" v-if="appointmentDialog">
             <div class="AppointmentDialog">
@@ -323,13 +305,7 @@
                 </div>
                 <!--省市区-->
                 <div class="address">
-                    <!--<weui-distpicker-->
-                    <!--:province="message.province"-->
-                    <!--:city="message.city"-->
-                    <!--:area="message.area"></weui-distpicker>-->
-                    <input v-model="selectedProvince" placeholder="省" type="text"><img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
-                    <input v-model="selectedCity" placeholder="市" type="text"><img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
-                    <input v-model="selectedArea" placeholder="区" type="text"><img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt="">
+                    <p style="margin: 0 auto;" @click="showAddressPicker">{{selectedProvince}}-{{selectedCity}}-{{selectedArea}}<img style="margin-left: 5px;" src="http://www.360myhl.com/meixinJF/MM/ximg/jiantou_03.png" alt=""></p>
                 </div>
                 <!--联系电话-->
                 <div class="inputPhoneNumber">
@@ -471,7 +447,15 @@
 
 <script>
   import axios from "axios";
-  import WeuiDistpicker from 'weui-distpicker'
+  import { provinceList, cityList, areaList } from '../../static/area'
+
+  const addressData = provinceList
+  addressData.forEach(province => {
+    province.children = cityList[province.value]
+    province.children.forEach(city => {
+      city.children = areaList[city.value]
+    })
+  })
 
   const column1 = [
     { text: "到店面试", value: "1" },
@@ -481,7 +465,6 @@
 
   export default {
     name: "index",
-    components: { WeuiDistpicker },
     data() {
       return {
         customIndex: 1,//图片预览索引
@@ -495,15 +478,11 @@
         isCollection: false, // 收藏图标样式切换
         appointmentDialog: false, // 预约的弹框
         selectedDate: "请选择日期", // 选中的日期
+        selectedMode: 1, // "到店面试": 1, "视频面试": 2, "上门面试": 3
         showSelectedMode: '预约方式', // 预约回显的数据
-        message: {
-          province: '广东省',
-          city: '广州市',
-          area: '海珠区'
-        },
-        selectedProvince: "", // 选中的 省
-        selectedCity: "", // 选中的 市
-        selectedArea: "", // 选中的 区
+        selectedProvince: "四川省", // 选中的 省
+        selectedCity: "成都市", // 选中的 市
+        selectedArea: "直辖区", // 选中的 区
         detailAddress: "", // 街道地址详情，用于数据双向绑定 v-model
         completeAddress: "", // 省、市、区 + 街道详情 的 数据拼接，用于提交给后台 （string）
         contactNumber: "", // 预约者的联系方式，用于数据双向绑定 v-model
@@ -538,6 +517,15 @@
             slot: "header"
           }, this.customIndex + 1);
         }).show();
+      },
+      //地址选择器
+      showAddressPicker() {
+        this.addressPicker.show()
+      },
+      selectAddressHandle(selectedVal, selectedIndex, selectedText) {
+        this.selectedCity = selectedText[0];
+        this.selectedArea = selectedText[1];
+        this.detailAddress = selectedText[2];
       },
       // 获取图片
       async requestPhotos(Yid) {
@@ -677,7 +665,7 @@
       async immediateReservation() {
         // 完整的 省、市、区 + 街道详情 的 数据拼接，用于提交给后台 （string）
         this.completeAddress = this.selectedProvince + "," + this.selectedCity + "," + this.selectedArea + "," + this.detailAddress;
-        console.log("this.selectedMode(服务方式)", this.selectedMode);
+        console.log("this.showSelectedMode(服务方式)", this.showSelectedMode);
         console.log("this.selectedDate(预约期)", this.selectedDate);
         console.log("this.contactNumber(手机号)", this.contactNumber);
         console.log("this.completeAddress(地址)", this.completeAddress);
@@ -719,9 +707,6 @@
       },
     },
     created() {
-      console.log("传递过来的id", this.$route.query.id);
-      console.log("传递过来的type", this.$route.query.type);
-
       this.priceType = this.$route.query.type;
       this.Yid = this.$route.query.id;
       let Yid = this.Yid;
@@ -729,7 +714,15 @@
       this.requestPersonalDetail(Yid); //获取月嫂个人信息
       this.requestVideos(Yid); // 获取月嫂视频
       this.getSchedule()// 获取月嫂档期
-    }
+    },
+    mounted () {
+    this.addressPicker = this.$createCascadePicker({
+      title: 'City Picker',
+      data: addressData,
+      onSelect: this.selectAddressHandle,
+      onCancel: this.cancelHandle
+    })
+  },
   };
 </script>
 
@@ -1230,49 +1223,6 @@
         color: #eb604a;
         font-size: 10px;
         border-radius: 15px;
-    }
-
-    /* 底部按钮 */
-    .yuesao-index .footer {
-        display: flex;
-        align-items: center;
-        height: 55px;
-        -webkit-box-shadow: 0 0 0.1481481481rem rgba(0, 0, 0, 0.15);
-        box-shadow: 0 0 0.1481481481rem rgba(0, 0, 0, 0.15);
-        padding: 0 .6814814815rem;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-around;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #e0e1e3;
-    }
-
-    .yuesao-index .footer-item {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        overflow: hidden;
-        font-size: 14px;
-        color: #9e9e9e;
-    }
-
-    .yuesao-index .footer img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .yuesao-index .footer P {
-        font-weight: normal;
     }
 
     /*预约面试的弹框*/

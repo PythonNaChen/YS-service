@@ -98,13 +98,10 @@
         <p>报名</p>
       </div>
     </div>
-
-    <tab-bar :select="this_path"></tab-bar>
   </div>
 </template>
 
 <script>
-  import tabBar from "../components/tabbar";
   import axios from "axios";
 
   export default {
@@ -122,9 +119,6 @@
         className: '', // 用户等级
         No_data: true // 为 false 时暂无数据
       };
-    },
-    components: {
-      tabBar
     },
     methods: {
       // 获取 当前路由来 切换tabBar样式

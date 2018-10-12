@@ -26,8 +26,10 @@ const schedule = r => require.ensure([], () => r(require('@/pages/schedule.vue')
 const detail_list = r => require.ensure([], () => r(require('@/pages/detail_list.vue')), 'detail_list');
 // 订单详情
 const orderDetails = r => require.ensure([], () => r(require('@/pages/orderDetails.vue')), 'orderDetails');
-// 订单详情
+// 报名
 const signUp = r => require.ensure([], () => r(require('@/pages/signUp.vue')), 'signUp');
+// 课堂内容详情页
+const article = r => require.ensure([], () => r(require('@/pages/article.vue')), 'article');
 
 export default new Router({
   routes: [
@@ -108,6 +110,12 @@ export default new Router({
       path: "/signUp",
       name: "signUp",
       component: signUp
+    },
+    // 报名
+    {
+      path: "/article",
+      name: "article",
+      component: article
     },
   ]
 });

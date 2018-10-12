@@ -1,12 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <tab-bar></tab-bar>
   </div>
 </template>
 
 <script>
+  import tabBar from './components/tabbar'
   export default {
     name: 'app',
+    components:{
+      tabBar
+    },
     created() {
       this.$router.push("/home");
     }
