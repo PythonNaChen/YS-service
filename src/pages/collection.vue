@@ -861,7 +861,7 @@
       padding: 12px 24px 18px;
       justify-content: space-between;
       ul {
-        width: 2.5rem;
+        width: 3.5rem;
         li {
           display: flex;
           align-items: center;
@@ -905,92 +905,73 @@
   }
 
   /*工作照片*/
-  .yuesao-index .work-photo {
-    border-bottom: 10px solid #f1f2f6;
-  }
-
-  .yuesao-index .work-photo .title {
-    height: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-left: .5185185185rem;
-    border-bottom: 10px solid #f1f2f6;
-    font-size: 14px;
-  }
-
-  .yuesao-index .work-photo .title img {
-    width: 19px;
-    height: 20px;
-    margin-right: 5px;
-  }
-
-  .yuesao-index .work-photo .photo-box {
-    margin: 4px 12px 12px;
-    overflow-x: scroll;
-  }
-
-  .yuesao-index .work-photo .photo-box .scroll-box {
-    width: 20000px;
-  }
-
-  .yuesao-index .work-photo .photo-box .img-box {
-    width: 91px;
-    height: 95px;
-    overflow: hidden;
-    float: left;
-    margin-right: 5px;
-  }
-
-  .yuesao-index .work-photo .photo-box .img-box img {
-    width: 100%;
-    height: 100%;
+  .yuesao-index .work-photo{
+    border-bottom: 0.13rem solid #f1f2f6;
+    .title {
+      height: 0.43rem;
+      display: flex;
+      align-items: center;
+      padding-left: 0.27rem;
+      font-size: 0.2rem;
+      border-bottom: 1px solid #f1f2f6;
+      img {
+        width: 0.4rem;
+        height: 0.4rem;
+        margin-right: 0.08rem;
+      }
+    }
+    .photo-box {
+      margin: 4px 12px 12px;
+      overflow-x: scroll;
+      .scroll-box {
+        width: 20000px;
+      }
+      .img-box {
+        width: 1.83rem;
+        height: 1.9rem;
+        overflow: hidden;
+        float: left;
+        margin-right: 5px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 
   /*工作视频*/
   .yuesao-index .work-video {
-    border-bottom: 10px solid #f1f2f6;
-  }
-
-  .yuesao-index .work-video .title {
-    height: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-left: .5185185185rem;
-    border-bottom: 10px solid #f1f2f6;
-    font-size: 14px;
-  }
-
-  .yuesao-index .work-video .title img {
-    width: 19px;
-    height: 12px;
-    margin-right: 5px;
-  }
-
-  .yuesao-index .work-video .video-list {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .yuesao-index .work-video .video-list .item {
-    width: 160px;
-    height: 170px;
-  }
-
-  .yuesao-index .work-video .video-list .item video {
-    width: 100%;
-    height: 100%;
+    border-bottom: 0.13rem solid #f1f2f6;
+    .title {
+      height: 0.43rem;
+      display: flex;
+      align-items: center;
+      padding-left: 0.27rem;
+      font-size: 0.2rem;
+      border-bottom: 1px solid #f1f2f6;
+      img {
+        width: 0.4rem;
+        height: 0.4rem;
+        margin-right: 0.08rem;
+      }
+    }
+    .video-list {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      .item {
+        width: 2.39rem;
+        height: 2.45rem;
+        video {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 
   /*评分*/
