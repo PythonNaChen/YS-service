@@ -1,97 +1,97 @@
 <!-- 订单详情 列表-->
 <template>
-    <div class="page">
-        <div class="top">
-            <div class="goBack" @click="goBack()">
-                <img src="../assets/images/goBack.png" alt="">
-            </div>
-            <div class="companyLogo">
-                <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="" class="logo">
-            </div>
-        </div>
-        <div class="info">
-            <ul>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>年龄</p></div>
-                    <div class="right"><input type="text" maxlength="2" v-model="age"></div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>出生日期</p></div>
-                    <div class="right">
-                        <p @click="showDatePicker">{{date}}</p>
-                    </div>
-                </li>
-                <!--<li>-->
-                <!--<div class="left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">-->
-                <!--<p>擅长菜系</p></div>-->
-                <!--&lt;!&ndash;<div class="right"><input type="text" :value=" '川菜' "></div>&ndash;&gt;-->
-                <!--<div class="right"><p>清淡</p></div>-->
-                <!--</li>-->
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>属相</p></div>
-                    <div class="right">
-                        <p @click="showZodiacPicker">{{zodiac}}</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>培训学校</p></div>
-                    <div class="right"><p>咪嘛教育</p></div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>擅长口味</p></div>
-                    <!--<div class="right"><input type="text" :value=" '清淡' "></div>-->
-                    <div class="right"><p>清淡</p></div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>身高</p></div>
-                    <div class="right"><input type="text" maxlength="3" v-model="height">&nbsp;<p>cm</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>籍贯</p></div>
-                    <div class="right"><input type="text" maxlength="5" v-model="city"></div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>生育状况</p></div>
-                    <div class="right">
-                        <p @click="showBirthPicker">{{birth}}</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>体重</p></div>
-                    <div class="right"><input type="text" v-model="weight">&nbsp;<p>kg</p></div>
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>学历</p></div>
-                    <div class="right">
-                        <p @click="showEducationPicker">{{education}}</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="submitBtn" @click="saveData()">提 交</div>
+  <div class="page">
+    <div class="top">
+      <div class="goBack" @click="goBack()">
+        <img src="../assets/images/goBack.png" alt="">
+      </div>
+      <div class="companyLogo">
+        <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" alt="" class="logo">
+      </div>
     </div>
+    <div class="info">
+      <ul>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>年龄</p></div>
+          <div class="right"><input type="text" maxlength="2" v-model="age"></div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>出生日期</p></div>
+          <div class="right">
+            <p @click="showDatePicker">{{date}}</p>
+          </div>
+        </li>
+        <!--<li>-->
+        <!--<div class="left">-->
+        <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">-->
+        <!--<p>擅长菜系</p></div>-->
+        <!--&lt;!&ndash;<div class="right"><input type="text" :value=" '川菜' "></div>&ndash;&gt;-->
+        <!--<div class="right"><p>清淡</p></div>-->
+        <!--</li>-->
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>属相</p></div>
+          <div class="right">
+            <p @click="showZodiacPicker">{{zodiac}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>培训学校</p></div>
+          <div class="right"><p>咪嘛教育</p></div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>擅长口味</p></div>
+          <!--<div class="right"><input type="text" :value=" '清淡' "></div>-->
+          <div class="right"><p>清淡</p></div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>身高</p></div>
+          <div class="right"><input type="text" maxlength="3" v-model="height">&nbsp;<p>cm</p>
+          </div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>籍贯</p></div>
+          <div class="right"><input type="text" maxlength="5" v-model="city"></div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>生育状况</p></div>
+          <div class="right">
+            <p @click="showBirthPicker">{{birth}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>体重</p></div>
+          <div class="right"><input type="text" v-model="weight">&nbsp;<p>kg</p></div>
+        </li>
+        <li>
+          <div class="left">
+            <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
+            <p>学历</p></div>
+          <div class="right">
+            <p @click="showEducationPicker">{{education}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="submitBtn" @click="saveData()">提 交</div>
+  </div>
 </template>
 
 <script>
@@ -247,79 +247,79 @@
 </script>
 
 <style scoped lang="less">
-    .page {
-        .top {
-            width: 100%;
-            background-color: #fafafa;
+  .page {
+    .top {
+      width: 100%;
+      background-color: #fafafa;
+      display: flex;
+      align-items: center;
+      .goBack {
+        img {
+          width: 0.6rem;
+          height: 0.6rem;
+          margin-left: 0.3rem;
+        }
+      }
+      .companyLogo {
+        width: 3.37rem;
+        height: 1.67rem;
+        margin: 0 auto;
+        .logo {
+          width: 100%;
+          height: 100%;
+          margin-left: -0.6rem;
+        }
+      }
+    }
+    .info {
+      ul {
+        li {
+          border-bottom: 1px solid #dadada;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          padding: 0 20px;
+          height: 1rem;
+          .left {
             display: flex;
             align-items: center;
-            .goBack {
-                img {
-                    width: 0.6rem;
-                    height: 0.6rem;
-                    margin-left: 0.3rem;
-                }
+            img {
+              width: 0.45rem;
+              height: 0.45rem;
+              margin-right: 0.13rem;
             }
-            .companyLogo {
-                width: 3.37rem;
-                height: 1.67rem;
-                margin: 0 auto;
-                .logo {
-                    width: 100%;
-                    height: 100%;
-                    margin-left: -0.6rem;
-                }
+            p {
+              font-size: 0.38rem;
+              color: #000000;
             }
-        }
-        .info {
-            ul {
-                li {
-                    border-bottom: 1px solid #dadada;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    -webkit-box-sizing: border-box;
-                    -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-                    padding: 0 20px;
-                    height: 40px;
-                    .left {
-                        display: flex;
-                        align-items: center;
-                        img {
-                            width: 15px;
-                            height: 15px;
-                            margin-right: 5px;
-                        }
-                        p {
-                            font-size: 14px;
-                            color: #000000;
-                        }
-                    }
-                    .right {
-                        display: flex;
-                        align-items: center;
-                        input, p {
-                            color: #797979;
-                            font-size: 14px;
-                            text-align: right;
-                            border: none;
-                            outline: none;
-                            background-color: #fafafa;
-                        }
-                    }
-                }
+          }
+          .right {
+            display: flex;
+            align-items: center;
+            input, p {
+              color: #797979;
+              font-size: 0.37rem;
+              text-align: right;
+              border: none;
+              outline: none;
+              background-color: #fafafa;
             }
+          }
         }
-        .submitBtn {
-            padding: 10px 10px;
-            color: #ffffff;
-            background-color: #ea5432;
-            border-radius: 7px;
-            width: 30%;
-            margin: 30px auto 0;
-            text-align: center;
-            font-size: 14px;
-        }
+      }
     }
+    .submitBtn {
+      padding: 10px 10px;
+      color: #ffffff;
+      background-color: #ea5432;
+      border-radius: 7px;
+      width: 80%;
+      margin: 30px auto 0;
+      text-align: center;
+      font-size: 0.38rem;
+    }
+  }
 </style>

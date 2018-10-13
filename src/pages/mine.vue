@@ -256,7 +256,7 @@
         .userInfo {
           margin-left: 0.45rem;
           .line_one {
-            font-size: 0.6rem;
+            font-size: 0.48rem;
             .level {
               color: #fff;
               background-color: #ff0000;
@@ -267,6 +267,7 @@
             }
           }
           .line_two {
+            font-size: 0.6rem;
           }
         }
       }
