@@ -146,8 +146,13 @@
                 id: queryId
               }
             }
-          );
-          if (data.data[0].customermobile === '') {
+          )
+            .catch((error) => {
+              console.log('error', error);
+              this.$router.push('/login');
+            });
+
+          if (!data.data[0].customermobile) {
             this.$router.push('/login');
           } else {
             if (data.data[0].wxphoto) {

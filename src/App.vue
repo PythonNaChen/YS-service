@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view/>
-    <tab-bar></tab-bar>
+    <div v-if="this.$route.path !== '/login'">
+      <tab-bar></tab-bar>
+    </div>
   </div>
 </template>
 
@@ -13,7 +15,7 @@
       tabBar
     },
     created() {
-      this.$router.push("/home");
+      this.$router.push("/mine");
     }
   }
 </script>
