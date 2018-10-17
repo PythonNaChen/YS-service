@@ -117,7 +117,8 @@
         pcname: "", // 用户姓名
         customermobile: "", // 用户手机号
         className: '', // 用户等级
-        No_data: true // 为 false 时暂无数据
+        No_data: true, // 为 false 时暂无数据
+        levelName: 0, // 月嫂等级
       };
     },
     methods: {
@@ -132,7 +133,7 @@
         });
       },
       // 跳转到 报名 列表
-      goSignUp(){
+      goSignUp() {
         this.$router.push('/SignUp')
       },
       // 获取用户信息
@@ -152,7 +153,7 @@
               this.$router.push('/login');
             });
 
-          if (!data.data[0].customermobile) {
+          if (!data.data[0].phone) {
             this.$router.push('/login');
           } else {
             if (data.data[0].wxphoto) {
@@ -160,12 +161,13 @@
             } else {
               this.photo = false
             }
-            this.pcname =  data.data[0].pcname;
+            this.pcname = data.data[0].pcname;
             this.YPHONE = data.data[0].YPHONE;
-            this.phone =  data.data[0].phone;
-            this.YNAME =  data.data[0].YNAME;
-            this.className =  data.data[0].className;
-            this.customermobile =  data.data[0].customermobile;
+            this.phone = data.data[0].phone;
+            this.YNAME = data.data[0].YNAME;
+            this.className = data.data[0].className;
+            this.customermobile = data.data[0].customermobile;
+            this.levelName = data.data[0].levelname
           }
         }
       },
@@ -206,12 +208,21 @@
       },
       // 点击跳转到详情页
       goSchedule() {
-        this.$router.push({
-          path: "/collection",
-          query: {
-            id: localStorage.getItem("queryId")
-          }
-        });
+        console.log('levelName', this.levelName);
+        if (this.levelName == 11) {
+          this.toast = this.$createToast({
+            txt: '账号等级不足，请联系您的管理员',
+            type: 'txt'
+          });
+          this.toast.show()
+        } else {
+          this.$router.push({
+            path: "/collection",
+            query: {
+              id: localStorage.getItem("queryId")
+            }
+          });
+        }
       },
       // 跳转到 订单详情 列表
       goOrderDetails() {

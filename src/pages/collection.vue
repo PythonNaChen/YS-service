@@ -22,7 +22,7 @@
             <!--<span>服务过46户</span>-->
           </p>
           <!--<a class="watch_detail" href="/static/rili.html">查看档期</a>-->
-          <p class="watch_detail" @click="goSchedule()">查看档期</p>
+          <a class="watch_detail" @click="goSchedule()">查看档期</a>
         </div>
       </div>
       <div class="header_bottom">
@@ -142,7 +142,7 @@
     <!--咪嘛月嫂评价-->
     <div class="response">
       <div class="title">咪嘛月嫂评价：</div>
-      <p>{{data.pj}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem in laudantium molestias similique voluptatibus? Architecto, et facere, fugiat illo ipsum minima modi nam nemo nostrum placeat praesentium similique vel vero? </p>
+      <p>{{data.pj}}</p>
     </div>
     <!--工作照片-->
     <div class="work-photo">
@@ -413,7 +413,7 @@
 
 <script>
   import axios from "axios";
-  import { provinceList, cityList, areaList } from "../../static/area";
+  import {provinceList, cityList, areaList} from "../../static/area";
 
   const addressData = provinceList;
   addressData.forEach(province => {
@@ -424,9 +424,9 @@
   });
 
   const column1 = [
-    { text: "到店面试", value: "1" },
-    { text: "视频面试", value: "2" },
-    { text: "上门面试", value: "3" }
+    {text: "到店面试", value: "1"},
+    {text: "视频面试", value: "2"},
+    {text: "上门面试", value: "3"}
   ];
 
   export default {
@@ -697,6 +697,10 @@
     color: #ea5a43;
   }
 
+  .yuesao-index {
+    background-color: #fff;
+  }
+
   /*返回上一页*/
   .goBack {
     position: absolute;
@@ -713,91 +717,95 @@
 
   .header {
     position: relative;
-    border-bottom: 7px solid #f1f2f6;
-
+    border-bottom: 0.27rem solid #f1f2f6;
     /*头部上半部分*/
     .header_top {
       border-bottom: 1px dashed #dcd8cc;
-      background-image: url("http://www.360myhl.com/meixinJF/MM/images/index/headerBGI.png");
+      background-image: url("https://www.360myhl.com/meixinJF/MM/ximg/headerBGI.png");
       background-repeat: no-repeat;
-      -webkit-background-size: 100% 3.25rem;
-      background-size: 100% 3.25rem;
+      background-size: 100% 4.68rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-top: 2.46rem;
       .yuesao_head_img {
-        width: 1.86rem;
-        height: 1.86rem;
-        text-align: center;
+        width: 2.66rem;
+        height: 2.60rem;
+        border-radius: 50%;
         margin: 0 auto;
+        overflow: hidden;
         img {
-          width: 1.86rem;
-          height: 1.86rem;
+          width: 3.4rem;
+          height: 3rem;
+          margin-left: -0.3rem;
           border-radius: 50%;
-          margin-top: 1.69rem;
         }
       }
       .header-detail {
         text-align: center;
-        padding-bottom: 0.17rem;
-        margin-top: 1.7rem;
+        padding-bottom: 0.25rem;
         .yuesao_name {
           color: #f2673a;
-          font-size: 0.33rem;
-          padding-top: 5px;
+          font-size: 0.48rem;
+          padding-top: 0.28rem;
           span {
             color: #fff;
             background-color: #ff0000;
-            padding: 0.02rem;
-            border-radius: 0.04rem;
-            font-size: 0.17rem;
+            padding: 1px 4px;
+            border-radius: 0.15rem;
+            font-size: 0.36rem;
           }
         }
-      }
-      .yuesao_salary {
-        color: #ea5905;
-        font-size: 0.21rem;
-        span {
-          font-size: 0.18rem;
-          color: #000;
-          font-weight: bold;
+        .yuesao_salary {
+          color: #ea5905;
+          font-size: 0.36rem;
+          padding-top: 0.35rem;
+          span {
+            font-size: 0.3rem;
+            color: #000;
+            font-weight: bold;
+          }
         }
-      }
-      .yuesao_experience {
-        color: #9d9d9d;
-        font-size: 0.2rem;
-        .experience_item {
-          margin-right: 5px;
+        .yuesao_experience {
+          color: #9d9d9d;
+          font-size: 0.36rem;
+          padding-top: 0.32rem;
+          .experience_item {
+            margin-right: 0.16rem;
+          }
         }
-      }
-      .watch_detail {
-        display: inline-block;
-        margin: 10px auto 0;
-        padding: 0.08rem .13rem;
-        color: #f57247;
-        border: 0.03rem solid #ea5944;
-        font-size: 0.22rem;
-        border-radius: 0.06rem;
-        width: 2.2rem;
+        .watch_detail {
+          display: inline-block;
+          margin: 0.3rem auto 0.24rem;
+          padding: 0.11rem 0.2rem;
+          color: #f57247;
+          border: 2px solid #ea5944;
+          font-size: 0.36rem;
+          border-radius: 0.1rem;
+          width: 2rem;
+        }
       }
     }
-
     /*头部下半部分*/
     .header_bottom {
-      padding: 0.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin: 0 auto;
-      width: 80%;
+      width: 85%;
+      padding: 0.36rem 0;
       .header_bottom_item {
         display: flex;
         align-items: center;
         img {
-          width: 0.36rem;
-          height: 0.36rem;
-          margin-right: 2px;
+          width: 0.56rem;
+          height: 0.54rem;
+          margin-right: 4px;
         }
         span {
           color: #841d1d;
-          font-size: 0.19rem;
+          font-size: 0.28rem;
+          line-height: 0.54rem;
         }
       }
     }
@@ -807,12 +815,15 @@
   .info {
     border-bottom: 0.13rem solid #f1f2f6;
     .title {
-      height: 0.43rem;
+      height: 0.62rem;
+      line-height: 0.62rem;
       display: flex;
       align-items: center;
       padding-left: 0.27rem;
-      font-size: 0.2rem;
       border-bottom: 1px solid #f1f2f6;
+      span {
+        font-size: 0.34rem;
+      }
       img {
         width: 0.4rem;
         height: 0.4rem;
@@ -822,13 +833,13 @@
     .info-detail {
       display: flex;
       justify-content: space-between;
-      font-size: 0.23rem;
-      padding: 6px 23px 9px;
+      padding: 6px 23px 0;
       ul {
         width: 3.2rem;
         li {
           color: #000;
           margin-bottom: 8px;
+          font-size: 0.36rem;
           overflow: hidden; /*溢出隐藏*/
           white-space: nowrap; /*文字不能转行*/
           text-overflow: ellipsis; /*隐藏的部分用...表示*/
@@ -844,12 +855,15 @@
   .character {
     border-bottom: 0.13rem solid #f1f2f6;
     .title {
-      height: 0.43rem;
+      height: 0.62rem;
+      line-height: 0.62rem;
       display: flex;
       align-items: center;
       padding-left: 0.27rem;
-      font-size: 0.2rem;
       border-bottom: 1px solid #f1f2f6;
+      span {
+        font-size: 0.34rem;
+      }
       img {
         width: 0.4rem;
         height: 0.4rem;
@@ -861,21 +875,20 @@
       padding: 12px 24px 18px;
       justify-content: space-between;
       ul {
-        width: 3.5rem;
+        width: 4.5rem;
         li {
           display: flex;
           align-items: center;
           margin-bottom: 0.18rem;
           span {
-            width: 2.2rem;
             height: 0.6rem;
             line-height: 0.6rem;
             display: inline-block;
-            font-size: 0.23rem;
+            font-size: 0.36rem;
           }
           img {
-            width: 0.24rem;
-            height: 0.24rem;
+            width: 0.36rem;
+            height: 0.36rem;
           }
         }
       }
@@ -891,29 +904,32 @@
   .yuesao-index .response {
     border-bottom: 0.15rem solid #f1f2f6;
     padding: 0.2rem 0.25rem;
+    font-size: 0.34rem;
+    font-weight: 200;
     .title {
-      font-size: 0.2rem;
       color: #000;
       font-weight: 600;
       margin-bottom: 0.13rem;
-      p {
-        font-size: 0.2rem;
-        color: #000;
-        line-height: 0.33rem;
-      }
+    }
+    p {
+      color: #000;
+      line-height: 0.6rem;
     }
   }
 
   /*工作照片*/
-  .yuesao-index .work-photo{
+  .yuesao-index .work-photo {
     border-bottom: 0.13rem solid #f1f2f6;
     .title {
-      height: 0.43rem;
+      height: 0.62rem;
+      line-height: 0.62rem;
       display: flex;
       align-items: center;
       padding-left: 0.27rem;
       font-size: 0.2rem;
-      border-bottom: 1px solid #f1f2f6;
+      span {
+        font-size: 0.34rem;
+      }
       img {
         width: 0.4rem;
         height: 0.4rem;
@@ -927,8 +943,8 @@
         width: 20000px;
       }
       .img-box {
-        width: 1.83rem;
-        height: 1.9rem;
+        width: 2.66rem;
+        height: 2.74rem;
         overflow: hidden;
         float: left;
         margin-right: 5px;
@@ -942,17 +958,18 @@
 
   /*工作视频*/
   .yuesao-index .work-video {
-    border-bottom: 0.13rem solid #f1f2f6;
     .title {
-      height: 0.43rem;
+      height: 0.62rem;
+      line-height: 0.62rem;
       display: flex;
       align-items: center;
       padding-left: 0.27rem;
-      font-size: 0.2rem;
-      border-bottom: 1px solid #f1f2f6;
+      span {
+        font-size: 0.34rem;
+      }
       img {
-        width: 0.4rem;
-        height: 0.4rem;
+        width: 0.42rem;
+        height: 0.26rem;
         margin-right: 0.08rem;
       }
     }
@@ -964,11 +981,42 @@
       display: flex;
       justify-content: space-between;
       .item {
-        width: 2.39rem;
-        height: 2.45rem;
+        width: 4.9rem;
+        height: 3.53rem;
         video {
           width: 100%;
           height: 100%;
+        }
+      }
+    }
+  }
+
+  /* 技能 */
+  .skills {
+    .skill_banner {
+      border-top: 10px solid #f1f2f6;
+      width: 100%;
+      height: 3.45rem;
+      margin-bottom: 0.34rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .info_detail {
+      display: flex;
+      justify-content: space-around;
+      font-size: 12px;
+      padding-bottom: 0.24rem;
+      li {
+        font-size: 0.38rem;
+        font-weight: bold;
+        line-height: 0.7rem;
+        img {
+          width: 0.42rem;
+          height: 0.42rem;
+          vertical-align: middle;
+          margin-right: 0.14rem;
         }
       }
     }
@@ -981,23 +1029,21 @@
   }
 
   .yuesao-index .star_score .title {
-    height: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    height: 0.56rem;
+    line-height: 0.56rem;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     padding-left: .5185185185rem;
     border-bottom: 10px solid #f1f2f6;
-    font-size: 14px;
     border-bottom: 1px solid #f1f2f6;
-  }
-
-  .yuesao-index .star_score .title img {
-    width: 19px;
-    height: 17px;
-    margin-right: 5px;
+    span {
+      font-size: 0.21rem;
+    }
+    img {
+      width: 19px;
+      height: 17px;
+      margin-right: 5px;
+    }
   }
 
   .yuesao-index .mark-detail-left {
@@ -1113,9 +1159,39 @@
     border-radius: 15px;
   }
 
-  /* 留言 和 技能 */
+  /* 底部按钮 */
+  .yuesao-index .footer {
+    position: fixed;
+    right: 0;
+    top: 15%;
+    img {
+      width: 2.5rem;
+      height: 5.5rem;
+    }
+    #collection {
+      width: 2rem;
+      height: 1.8rem;
+      position: absolute;
+      top: 0.5rem;
+      left: 0.2rem;
+      border-radius: 0.5rem;
+      z-index: 1;
+    }
+    #appointment {
+      width: 2rem;
+      height: 1.8rem;
+      position: absolute;
+      bottom: 0.6rem;
+      left: 0.2rem;
+      border-radius: 0.5rem;
+      z-index: 1;
+    }
+  }
+
+  /* 留言 */
   .leaving_msg .title {
-    height: 20px;
+    height: 0.56rem;
+    line-height: 0.56rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1124,13 +1200,14 @@
     align-items: center;
     padding-left: .5185185185rem;
     border-bottom: 10px solid #f1f2f6;
-    font-size: 14px;
-  }
-
-  .leaving_msg .title img {
-    width: 19px;
-    height: 18px;
-    margin-right: 5px;
+    span {
+      font-size: 0.21rem;
+    }
+    img {
+      width: 19px;
+      height: 18px;
+      margin-right: 5px;
+    }
   }
 
   .topBox {
@@ -1177,33 +1254,4 @@
     font-weight: bold;
   }
 
-  .skills {
-    border-top: 10px solid #f1f2f6;
-    .skill_banner {
-      width: 100%;
-      height: 2.4rem;
-      margin-bottom: 0.34rem;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .info_detail {
-      display: flex;
-      justify-content: space-around;
-      font-size: 12px;
-      padding-bottom: 0.24rem;
-      li {
-        font-size: 0.23rem;
-        font-weight: bold;
-        line-height: 0.7rem;
-        img {
-          width: 0.42rem;
-          height: 0.42rem;
-          vertical-align: middle;
-          margin-right: 0.14rem;
-        }
-      }
-    }
-  }
 </style>

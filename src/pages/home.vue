@@ -64,8 +64,8 @@
                 <div class="Right1">已有<span>{{item.nums}}</span>位护理员报名</div>
             </div>
         </div>
-        <div class="order_list" v-else style="display: flex;align-items: center">
-            <span style="color: #ea5a43; width: 100px;margin: 30px auto 0;text-align: center;font-size: 0.5rem;">暂无数据...</span>
+        <div class="order_list" v-if="data && data.length === 0" style="display: flex;align-items: center">
+            <span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>
         </div>
         <div id="box" style="height: 1.26rem;"></div>
     </div>

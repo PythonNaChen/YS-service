@@ -1,7 +1,9 @@
 <template>
   <div class="page">
     <div class="logo">
-      <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" class="logo">
+      <router-link to="/home">
+        <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" class="logo">
+      </router-link>
     </div>
     <div class="info">
       <div class="phone">

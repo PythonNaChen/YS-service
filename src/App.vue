@@ -15,7 +15,7 @@
       tabBar
     },
     created() {
-      this.$router.push("/mine");
+      this.$router.push("/home");
     }
   }
 </script>
