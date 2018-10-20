@@ -209,12 +209,13 @@
       // 点击跳转到详情页
       goSchedule() {
         console.log('levelName', this.levelName);
-        if (this.levelName == 11) {
+        if (this.levelName === 11 || this.levelName === '11') {
           this.toast = this.$createToast({
             txt: '账号等级不足，请联系您的管理员',
             type: 'txt'
           });
           this.toast.show()
+          return false
         } else {
           this.$router.push({
             path: "/collection",
@@ -239,6 +240,7 @@
           path: "/login"
         });
       }
+      console.log(window.location.host);
     }
   };
 </script>

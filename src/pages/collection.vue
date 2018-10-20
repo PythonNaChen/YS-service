@@ -21,7 +21,6 @@
             <span class="experience_item">{{data.nx}}年工作经验</span>
             <!--<span>服务过46户</span>-->
           </p>
-          <!--<a class="watch_detail" href="/static/rili.html">查看档期</a>-->
           <a class="watch_detail" @click="goSchedule()">查看档期</a>
         </div>
       </div>
@@ -735,9 +734,8 @@
         margin: 0 auto;
         overflow: hidden;
         img {
-          width: 3.4rem;
-          height: 3rem;
-          margin-left: -0.3rem;
+          width: 100%;
+          height: 100%;
           border-radius: 50%;
         }
       }
@@ -782,7 +780,6 @@
           border: 2px solid #ea5944;
           font-size: 0.36rem;
           border-radius: 0.1rem;
-          width: 2rem;
         }
       }
     }

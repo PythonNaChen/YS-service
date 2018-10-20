@@ -39,6 +39,6 @@
   p {
     color: #999999;
     line-height: 0.5rem;
-    font-size: 0.36rem;
+    font-size: 0.27rem;
   }
 </style>

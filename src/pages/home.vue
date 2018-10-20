@@ -206,8 +206,8 @@
                 position: fixed;
                 right: 0.19rem;
                 top: 35%;
-                width: 1.55rem;
-                height: 1.55rem;
+                width: 1rem;
+                height: 1rem;
                 border-radius: 50%;
                 box-shadow: 0 0 2px 2px #ebc0bc;
                 background-color: #fff;
