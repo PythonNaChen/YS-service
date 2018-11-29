@@ -10,15 +10,15 @@
                 <span>宝宝体温（℃）</span>
                 <input type="text" maxlength="2" placeholder="输入体温，如 36" v-model="baby_temperature">
             </li>
-            <li>
-                <div @click="showDatePicker">
-                    <span type="default">点击选择测量日期</span>
+            <li @click="showDatePicker">
+                <div>
+                    <span type="default">选择测量日期</span>
                 </div>
                 <em style="text-align: right;">{{MT}}</em>
             </li>
-            <li>
-                <div @click="showTimePicker">
-                    <span type="default">点击选择测量时间</span>
+            <li @click="showTimePicker">
+                <div>
+                    <span type="default">选择测量时间</span>
                 </div>
                 <em style="text-align: right;">{{selectedTime}}</em>
             </li>
@@ -46,9 +46,9 @@
         </ul>
         <!--早启蒙教育-->
         <ul class="info-list" v-if="selectIndex === 'b2'">
-            <li>
-                <div @click="showPicker">
-                    <span type="default">选择早启蒙教育</span>
+            <li @click="showPicker">
+                <div>
+                    <span type="default">选择启蒙教育</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
             </li>
@@ -58,8 +58,8 @@
         </ul>
         <!--脐带护理-->
         <ul class="info-list" v-if="selectIndex === 'b3'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">选择脐带护理</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -70,8 +70,8 @@
         </ul>
         <!--黄疸观察-->
         <ul class="info-list" v-if="selectIndex === 'b4'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">黄疸观察</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -82,22 +82,22 @@
         </ul>
         <!--喂养记录-->
         <ul class="info-list" v-if="selectIndex === 'b5'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">喂养记录</span>
                 </div>
                 <em style="text-align: right;">{{feeding_patterns}}</em>
             </li>
         </ul>
         <ul class="info-list" v-if="feeding_patterns === '母乳喂养'">
-            <li>
-                <div @click="showStartTimePicker">
+            <li @click="showStartTimePicker">
+                <div>
                     <span type="default">点击选择开始时间</span>
                 </div>
                 <em style="text-align: right;">{{start_time}}</em>
             </li>
-            <li>
-                <div @click="showEndTimePicker">
+            <li @click="showEndTimePicker">
+                <div>
                     <span type="default">点击选择结束时间</span>
                 </div>
                 <em style="text-align: right;">{{end_time}}</em>
@@ -110,8 +110,8 @@
             <li>
                 <input  maxlength="2" type="text" placeholder="80" v-model="milliliter"><span>/ml</span>
             </li>
-            <li>
-                <div @click="showStartTimePicker">
+            <li @click="showStartTimePicker">
+                <div>
                     <span type="default">
                         <span type="default">点击选择母乳喂养开始时间</span>
                     </span>
@@ -141,14 +141,14 @@
                 <span>沐浴次数：</span>
                 <input maxlength="3" type="text" placeholder="0" v-model="times">
             </li>
-            <li>
-                <div @click="showDatePicker">
+            <li @click="showDatePicker">
+                <div>
                     <span type="default">点击选择沐浴日期</span>
                 </div>
                 <em style="text-align: right;">{{MT}}</em>
             </li>
-            <li>
-                <div @click="showTimePicker">
+            <li @click="showTimePicker">
+                <div>
                     <span type="default">点击选择沐浴时间</span>
                 </div>
                 <em style="text-align: right;">{{selectedTime}}</em>
@@ -159,8 +159,8 @@
         </ul>
         <!--黄疸观察-->
         <ul class="info-list" v-if="selectIndex === 'b7'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">皮肤观察</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -171,8 +171,8 @@
         </ul>
         <!--大便观察-->
         <ul class="info-list" v-if="selectIndex === 'b8'">
-            <li style="overflow: hidden">
-                <div @click="showCascadePicker">
+            <li style="overflow: hidden" @click="showCascadePicker">
+                <div>
                     <span type="default">大便观察</span>
                 </div>
                 <em style="text-align: right;">{{other}}</em>
@@ -183,8 +183,8 @@
         </ul>
         <!--小便观察-->
         <ul class="info-list" v-if="selectIndex === 'b9'">
-            <li style="overflow: hidden">
-                <div @click="showCascadePicker">
+            <li style="overflow: hidden" @click="showCascadePicker">
+                <div>
                     <span type="default">小便观察</span>
                 </div>
                 <em style="text-align: right;">{{other}}</em>
@@ -195,14 +195,14 @@
         </ul>
         <!--睡眠观察-->
         <ul class="info-list" v-if="selectIndex === 'b10'">
-            <li>
-                <div @click="showStartTimePicker">
+            <li @click="showStartTimePicker">
+                <div>
                     <span type="default">点击选择开始时间</span>
                 </div>
                 <em style="text-align: right;">{{start_time}}</em>
             </li>
-            <li>
-                <div @click="showEndTimePicker">
+            <li @click="showEndTimePicker">
+                <div>
                     <span type="default">点击选择结束时间</span>
                 </div>
                 <em style="text-align: right;">{{end_time}}</em>
@@ -223,8 +223,8 @@
         </ul>
         <!--奶具消毒-->
         <ul class="info-list" v-if="selectIndex === 'b12'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">奶具消毒</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -240,14 +240,14 @@
                 <span>测量体温：</span>
                 <input  maxlength="2" type="text" placeholder="℃" v-model="mm_temperature">
             </li>
-            <li>
-                <div @click="showDatePicker">
+            <li @click="showDatePicker">
+                <div>
                     <span type="default">点击选择测量日期</span>
                 </div>
                 <em style="text-align: right;">{{MT}}</em>
             </li>
-            <li>
-                <div @click="showTimePicker">
+            <li @click="showTimePicker">
+                <div>
                     <span type="default">点击选择测量时间</span>
                 </div>
                 <em style="text-align: right;">{{selectedTime}}</em>
@@ -262,14 +262,14 @@
                 <span>餐点名称：</span>
                 <input type="text" placeholder="红烧肉" v-model="foodName">
             </li>
-            <li>
-                <div @click="showDatePicker">
+            <li @click="showDatePicker">
+                <div>
                     <span type="default">点击选择用餐日期</span>
                 </div>
                 <em style="text-align: right;">{{MT}}</em>
             </li>
-            <li>
-                <div @click="showTimePicker">
+            <li @click="showTimePicker">
+                <div>
                     <span type="default">点击选择用餐时间</span>
                 </div>
                 <em style="text-align: right;">{{selectedTime}}</em>
@@ -280,8 +280,8 @@
         </ul>
         <!--身体护理-->
         <ul class="info-list" v-if="selectIndex === 'm2'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">身体护理</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -292,8 +292,8 @@
         </ul>
         <!--胸部护理-->
         <ul class="info-list" v-if="selectIndex === 'm3'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">胸部护理</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -304,8 +304,8 @@
         </ul>
         <!--恶露观察-->
         <ul class="info-list" v-if="selectIndex === 'm4'">
-            <li style="overflow: hidden">
-                <div @click="showCascadePicker">
+            <li style="overflow: hidden" @click="showCascadePicker">
+                <div>
                     <span type="default">恶露观察</span>
                 </div>
                 <em style="text-align: right;">{{other}}</em>
@@ -316,14 +316,14 @@
         </ul>
         <!--经络按摩-->
         <ul class="info-list" v-if="selectIndex === 'm5'">
-            <li>
-                <div @click="showStartTimePicker">
+            <li @click="showStartTimePicker">
+                <div>
                     <span type="default">点击选择开始时间</span>
                 </div>
                 <em style="text-align: right;">{{start_time}}</em>
             </li>
-            <li>
-                <div @click="showEndTimePicker">
+            <li @click="showEndTimePicker">
+                <div>
                     <span type="default">点击选择结束时间</span>
                 </div>
                 <em style="text-align: right;">{{end_time}}</em>
@@ -334,14 +334,14 @@
         </ul>
         <!--形体操指导-->
         <ul class="info-list" v-if="selectIndex === 'm6'">
-            <li>
-                <div @click="showStartTimePicker">
+            <li @click="showStartTimePicker">
+                <div>
                     <span type="default">点击选择开始时间</span>
                 </div>
                 <em style="text-align: right;">{{start_time}}</em>
             </li>
-            <li>
-                <div @click="showEndTimePicker">
+            <li @click="showEndTimePicker">
+                <div>
                     <span type="default">点击选择结束时间</span>
                 </div>
                 <em style="text-align: right;">{{end_time}}</em>
@@ -352,14 +352,14 @@
         </ul>
         <!--腹带塑身-->
         <ul class="info-list" v-if="selectIndex === 'm7'">
-            <li>
-                <div @click="showStartTimePicker">
+            <li @click="showStartTimePicker">
+                <div>
                     <span type="default">点击选择开始时间</span>
                 </div>
                 <em style="text-align: right;">{{start_time}}</em>
             </li>
-            <li>
-                <div @click="showEndTimePicker">
+            <li @click="showEndTimePicker">
+                <div>
                     <span type="default">点击选择结束时间</span>
                 </div>
                 <em style="text-align: right;">{{end_time}}</em>
@@ -370,8 +370,8 @@
         </ul>
         <!--清洗与消毒-->
         <ul class="info-list" v-if="selectIndex === 'm8'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">清洗与消毒</span>
                 </div>
                 <em style="text-align: right;">{{selected_value}}</em>
@@ -382,8 +382,8 @@
         </ul>
         <!--用药记录-->
         <ul class="info-list" v-if="selectIndex === 'm9'">
-            <li>
-                <div @click="showPicker">
+            <li @click="showPicker">
+                <div>
                     <span type="default">用药记录</span>
                 </div>
                 <em style="text-align: right;">{{selected_object}}</em>
@@ -398,14 +398,14 @@
                 <span>用量：</span>
                 <input type="text" placeholder="50ml" v-model="use_level">
             </li>
-            <li>
-                <div @click="showDatePicker">
+            <li @click="showDatePicker">
+                <div>
                     <span type="default">点击选择用药日期</span>
                 </div>
                 <em style="text-align: right;">{{MT}}</em>
             </li>
-            <li>
-                <div @click="showTimePicker">
+            <li @click="showTimePicker">
+                <div>
                     <span type="default">点击选择用药时间</span>
                 </div>
                 <em style="text-align: right;">{{selectedTime}}</em>
@@ -423,14 +423,14 @@
                 <span>用量：</span>
                 <input type="text" placeholder="50ml" v-model="use_level">
             </li>
-            <li>
-                <div @click="showDatePicker">
+            <li @click="showDatePicker">
+                <div>
                     <span type="default">点击选择用药日期</span>
                 </div>
                 <em style="text-align: right;">{{MT}}</em>
             </li>
-            <li>
-                <div @click="showTimePicker">
+            <li @click="showTimePicker">
+                <div>
                     <span type="default">点击选择用药时间</span>
                 </div>
                 <em style="text-align: right;">{{selectedTime}}</em>

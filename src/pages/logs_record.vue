@@ -13,7 +13,7 @@
       </div>
     </div>
     <p>妈妈护理</p>
-    <div class="mm_nurse">
+    <div class="mm_nurse" >
       <div class="nurse_item" v-for="(item, index) in mm_nurse_list" :key="index">
         <img :src="item.imgSrc" alt="" @click="goMotherDetail(item)">
       </div>
@@ -224,6 +224,10 @@
     justify-content: flex-start;
     box-sizing: border-box;
     padding-left: 0.3rem;
+  }
+
+  .page .mm_nurse{
+    padding-bottom: 1.5rem;
   }
 
   .page .baby_nurse {

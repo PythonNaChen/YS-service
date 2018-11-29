@@ -23,10 +23,12 @@
     </div>
     <!--联系方式-->
     <div class="phone">
-      <img src="http://www.360myhl.com/meixinJF/MM/ximg/user_07.png" alt="">
-      <span class="lab1">联系电话：</span>
-      <span class="lab2" v-if="YPHONE === null">暂无</span>
-      <span class="lab2" v-else>{{YPHONE}}</span>
+      <a href="tel:4000360028" style="color: #000;">
+        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user_07.png" alt="">
+        <span class="lab1">联系电话：</span>
+        <span class="lab2" v-if="YPHONE === null">暂无</span>
+        <span class="lab2" v-else>{{YPHONE}}</span>
+      </a>
     </div>
     <!--钱包&消息-->
     <!--<div class="manager_msg">-->
